@@ -9,6 +9,10 @@
 body {
   font-family: Arial, sans-serif;
   line-height: 1.5;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* HEADER */
@@ -27,9 +31,24 @@ body {
   text-decoration: none;
 }
 
+/* FOOTER */
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  background: #333;
+  color: white;
+}
+footer p {
+  background: #333;
+  color: white;
+}
+
 /* CONTENT */
 .content {
   padding: 24px;
+  flex: 1;
 }
 
 /* MOBILE RESPONSIVE */
