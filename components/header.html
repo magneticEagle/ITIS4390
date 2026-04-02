@@ -1,14 +1,43 @@
-  <header class="header">
-    <div class="top-bar">
-      <div class="logo">Logo</div>
+<header class="site-header">
+  <div class="page-shell">
+    <div class="header-row">
 
-      <div class="search-container">
-        <input type="text" placeholder="Product Search" class="search-bar">
+      <!-- Logo ( will eventually be an image and not textual) -->
+      <a class="logo" href="#">Logo</a>
+
+      <!-- Non working search bar for now -->
+      <div class="search-wrap">
+        <input type="text" placeholder="Product Search" aria-label="Product search">
       </div>
 
-      <div class="top-right">
-        <button class="top-btn">Msgs</button>
-        <button class="top-btn">Help</button>
-      </div>
+      <!-- The messages and account buttons -->
+      <a class="header-box" href="#">Msgs</a>
+      <a class="header-box" href="#">Acct</a>
+
+      <!-- The hamburger menu which appears on the mobile screen size -->
+      <details class="mobile-nav">
+        <summary class="menu-toggle" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </summary>
+        <div class="mobile-menu">
+          <nav aria-label="Mobile navigation">
+            <a href="#">Home</a>
+            <a href="#">Search</a>
+            <a href="#">Post</a>
+            <a href="#">Help</a>
+          </nav>
+        </div>
+      </details>
+
+      <!-- When the hamburger menu is not in use / when the user is on desktop -->
+      <nav class="desktop-nav" aria-label="Desktop navigation">
+        <a href="#">Home</a>
+        <a href="#">Search</a>
+        <a href="#">Post</a>
+        <a href="#">Help</a>
+      </nav>
     </div>
-  </header>
+  </div>
+</header>
