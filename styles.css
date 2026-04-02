@@ -9,26 +9,6 @@
 body {
   font-family: Arial, sans-serif;
   line-height: 1.5;
-  padding-left: 100px;
-  padding-right: 100px;
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
-
-h1 {
-  font-size: 50px;
-  padding-left: 20px;
-}
-
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(autofit, minmax(200px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-.product-box {
-  
 }
 
 /* HEADER */
@@ -36,25 +16,136 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px;
-  background: #333;
+  padding: 1rem 1.25rem;
+  background: #646464;
   color: white;
+  font-size: 20px;
 }
 
-.nav a {
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-weight: bold;
+}
+
+.search-container {
+  flex: 1;
+  max-width: 200px;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 0.35rem;
+  border: none;
+  font-size: 1rem;
+}
+.top-right {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.top-btn {
+  padding: 0.5rem;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* HOME PAGE */
+.home-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.content-section {
+  margin-bottom: 2rem;
+}
+
+.content-section h1 {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  justify-items: center;
+  padding: 0 0.05rem;
+}
+
+/* hide 3rd card on mobile*/
+.product-card:nth-child(3) {
+  display: none;
+}
+
+.product-card {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.product-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #aaa5a5;
   color: white;
-  margin-left: 16px;
-  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.25rem 1rem;
+  border-radius: 6px;
 }
 
-/* CONTENT */
-.content {
-  padding: 24px;
+.product-image span {
+  display: block;
+  padding-bottom: 25px;
+  padding-top: 15px;
+  font-size: 1.25rem;
 }
 
-/* MOBILE RESPONSIVE */
-@media (max-width: 600px) {
-  .nav {
-    display: none;
+/* desktop */
+@media (min-width: 1024px) {
+.search-container {
+  flex: 1;
+  max-width: 600px;
+}
+
+  .home-page {
+    padding: 1.5rem 4rem 1rem 4rem;
+  }
+
+  .content-section {
+    margin-bottom: 3rem;
+  }
+
+  .content-section h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.2rem;
+    padding-left: 3.8rem;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 0;
+  }
+
+  .product-card:nth-child(3) {
+    display: block;
+  }
+
+  .product-image {
+    width: 100%;
+    max-width: 240px;
   }
 }
+  
