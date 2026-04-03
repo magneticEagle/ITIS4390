@@ -207,3 +207,89 @@ a {
     padding: 0.25rem 0;
   }
 }
+
+
+
+/* Help Page Styling */
+
+.help-page {
+  background: #d4d4d4;
+  min-height: 100vh;
+  padding: 32px 16px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.help-page-title {
+  font-size: 24px;
+  font-weight: 800;
+  text-decoration: underline;
+  margin-bottom: 32px;
+  color: #111;
+  text-align: left;
+  width: 100%;
+}
+
+.accordion-list {
+  width: 100%;
+  max-width: 820px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.accordion-item {
+  background: #737373;
+  border-radius: 14px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.accordion-item span {
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.accordion-item-button {
+  width: 20px;
+  height: 20px;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+/* Help Page (Desktop Styling) */
+@media (min-width: 768px) {
+  .help-page {
+    padding: 48px 24px 60px;
+  }
+
+  .help-page-title {
+    font-size: 32px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .accordion-list {
+    max-width: 820;
+    gap: 20px;
+  }
+
+  .accordion-item {
+    border-radius: 18px;
+    padding: 22px 28px;
+  }
+
+  .accordion-item span {
+    font-size: 22px;
+  }
+
+  .accordion-item-button {
+    width: 22px;
+    height: 22px;
+  }
+}
