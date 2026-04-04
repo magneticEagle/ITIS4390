@@ -1,27 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Student Project</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <!-- Makes the page scale correctly on phones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Listing</title>
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
 </head>
-TEST
 <body>
-  <header class="header">
-    <div class="logo">My Website</div>
+  <!-- Top header -->
+  <header class="site-header">
+    <div class="page-shell">
+      <div class="header-row">
+        <!-- Logo -->
+        <a class="logo" href="#">Logo</a>
 
-    <nav class="nav">
-      <a href="#">Home</a>
-      <a href="#">Explore</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </nav>
+        <!-- Search bar -->
+        <div class="search-wrap">
+          <input type="text" placeholder="Search" aria-label="Product search">
+        </div>
+
+        <!-- Quick links -->
+<a class="header-box icon-btn" href="#" aria-label="Messages">
+  <span>✉</span>
+</a>
+<a class="header-box icon-btn" href="#" aria-label="Account">
+  <span>𖨆</span>
+</a>
+
+        <!-- Mobile hamburger menu -->
+        <details class="mobile-nav">
+          <summary class="menu-toggle" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </summary>
+
+          <div class="mobile-menu">
+            <nav aria-label="Mobile navigation">
+              <a href="index.html">Home</a>
+              <a href="search.html">Search</a>
+              <a href="listing.html"><strong>Post</strong></a>
+              <a href="help.html">Help</a>
+            </nav>
+          </div>
+        </details>
+
+        <!-- Desktop navigation -->
+        <nav class="desktop-nav" aria-label="Desktop navigation">
+          <a href="index.html">Home</a>
+          <a href="search.html">Search</a>
+          <a href="listing.html"><strong>Post</strong></a>
+          <a href="help.html">Help</a>
+        </nav>
+      </div>
+    </div>
   </header>
 
-  <main class="content">
-    <h1>Welcome</h1>
-    <p>This is a simple responsive layout.</p>
+  <!-- Main page content -->
+  <main class="page-shell">
+    <section class="main-card listing-page">
+      <!-- Main form area -->
+      <div class="listing-main">
+        <!-- Image upload area -->
+        <div class="form-block">
+          <div class="placeholder-box image-box">
+            <div>
+              <div>Select Images</div>
+              <div class="small-text">(Max: 10)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Listing info -->
+        <div class="form-block">
+          <h1 class="section-title">Listing Information</h1>
+          <input class="input" type="text" placeholder="Title">
+
+          <!-- Price and ZIP code -->
+          <div class="two-col">
+            <input class="input" type="text" placeholder="Price">
+            <input class="input" type="text" placeholder="ZIP Code">
+          </div>
+        </div>
+
+        <!-- Category -->
+        <div class="form-block">
+          <div class="fake-select">
+            <select class="select">
+              <option>Category</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="form-block">
+          <textarea class="textarea" placeholder="Description"></textarea>
+        </div>
+      </div>
+
+      <!-- Side area -->
+      <aside class="listing-side">
+        <!-- Item details -->
+        <section class="form-block">
+          <h2 class="section-title">Item Details</h2>
+
+          <div>
+            <div class="fake-select">
+              <select class="select">
+                <option>Condition</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <input class="input" type="text" placeholder="Size">
+          </div>
+
+          <div>
+            <input class="input" type="text" placeholder="Brand">
+          </div>
+
+          <div>
+            <input class="input" type="text" placeholder="Model">
+          </div>
+        </section>
+
+        <!-- Action buttons -->
+        <div class="button-row">
+<div class="button-box dark">Post</div>
+<div class="button-box outline">Cancel</div>
+        </div>
+      </aside>
+    </section>
   </main>
+
+  <!-- Bottom nav for mobile -->
+  <div class="bottom-nav">
+<div class="bottom-nav-inner">
+  <a href="index.html" aria-label="Home">⌂</a>
+  <a href="search.html" aria-label="Search">⌕</a>
+  <a href="listing.html" aria-label="Post">✎</a>
+  <a href="help.html" aria-label="Help">🛈</a>
+</div>
+    </div>
 </body>
 </html>
