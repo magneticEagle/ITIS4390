@@ -1,51 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Student Project</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <!-- Makes the page scale correctly on phones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product</title>
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
-<div data-component="/components/header.html"></div>
+  <!-- Top header -->
+  <header class="site-header">
+    <div class="page-shell">
+      <div class="header-row">
+        <!-- Logo -->
+        <a class="logo" href="#">Logo</a>
 
-  <main class="content">
-    <h1>Electronics</h1>
-    <div class="filters">
-      <div class="filter">
-        <button class="filter-btn">Recency ▾</button>
-        <div class="filter-dropdown">
-          <p>24 Hours</p>
-          <p>1 Week</p>
-          <p>30 Days</p>
-          <p>30+ Days</p>
+        <!-- Search bar -->
+        <div class="search-wrap">
+          <input type="text" placeholder="Search" aria-label="Product search">
         </div>
-      </div>
 
-      <div class="filter">
-        <button class="filter-btn">Price ▾</button>
-        <div class="filter-dropdown">
-          <p>Low to High</p>
-          <p>High to Low</p>
-          <p>Free</p>
-        </div>
-      </div>
+        <!-- Quick links -->
+<a class="header-box icon-btn" href="#" aria-label="Messages">
+  <span>✉</span>
+</a>
+<a class="header-box icon-btn" href="#" aria-label="Account">
+  <span>𖨆</span>
+</a>
 
-      <div class="filter">
-        <button class="filter-btn">Condition ▾</button>
-        <div class="filter-dropdown">
-          <p>New</p>
-          <p>Like New</p>
-          <p>Used - Good</p>
-          <p>Used - Okay</p>
-        </div>
+        <!-- Mobile hamburger menu -->
+        <details class="mobile-nav">
+          <summary class="menu-toggle" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </summary>
+
+          <div class="mobile-menu">
+            <nav aria-label="Mobile navigation">
+              <a href="index.html">Home</a>
+              <a href="search.html">Search</a>
+              <a href="listing.html">Post</a>
+              <a href="help.html">Help</a>
+            </nav>
+          </div>
+        </details>
+
+        <!-- Desktop navigation -->
+        <nav class="desktop-nav" aria-label="Desktop navigation">
+          <a href="index.html">Home</a>
+          <a href="search.html">Search</a>
+          <a href="listing.html">Post</a>
+          <a href="help.html">Help</a>
+        </nav>
       </div>
     </div>
-    <div class="product-grid" id="product-grid"></div>
+  </header>
+
+  <!-- Main page content -->
+  <main class="page-shell">
+    <section class="main-card product-page">
+      <div class="product-main">
+        <!-- Product image area -->
+        <div class="product-image-wrap">
+          <div class="placeholder-box image-box">Product Image Carousel</div>
+
+          <!-- Carousel dots -->
+          <div class="carousel-dots" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <!-- Product heading -->
+        <section class="product-header">
+          <div class="product-heading-row">
+            <div class="product-heading-text">
+              <h1 class="section-title">Listing Name</h1>
+              <p class="muted-text">City, State</p>
+              <p class="small-text">Listed (time) ago</p>
+            </div>
+
+            <p class="product-price">$000.00</p>
+          </div>
+        </section>
+
+        <!-- Main actions -->
+        <div class="button-row product-buttons">
+<div class="button-box dark">Offer</div>
+<div class="button-box outline wishlist-btn">Wishlist</div>
+        </div>
+
+        <!-- Product details -->
+        <section class="info-block product-details-block">
+          <h2 class="section-title">Product Details</h2>
+          <ul class="details-list">
+            <li>Category: x</li>
+            <li>Brand: y</li>
+            <li>Model: z</li>
+          </ul>
+        </section>
+
+        <!-- Description -->
+        <section class="info-block product-description">
+          <h2 class="section-title">Description</h2>
+          <p class="muted-text">Text body</p>
+        </section>
+
+        <!-- Seller info -->
+        <section class="info-block seller-block">
+          <h2 class="section-title">Seller</h2>
+
+          <div class="seller-row">
+            <div class="seller-avatar"></div>
+            <div>
+              <p class="muted-text">Seller Name</p>
+              <p class="small-text">X reviews, X/X Stars</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Location -->
+        <section class="info-block product-location">
+          <h2 class="section-title">Location</h2>
+          <div class="placeholder-box">Map of Product Location</div>
+        </section>
+      </div>
+    </section>
   </main>
-  <div data-component="/components/footer.html"></div>
-  <script src="/scripts/loadComponents.js"></script>
-  <script src="/scripts/products.js"></script>
+
+  <!-- Bottom nav for mobile -->
+  <div class="bottom-nav">
+<div class="bottom-nav-inner">
+  <a href="index.html" aria-label="Home">⌂</a>
+  <a href="search.html" aria-label="Search">⌕</a>
+  <a href="listing.html" aria-label="Post">✎</a>
+  <a href="help.html" aria-label="Help">🛈</a>
+</div>
+    </div>
 </body>
 </html>

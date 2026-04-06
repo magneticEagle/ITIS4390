@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search</title>
+  <link rel="stylesheet" href="css/search.css" />
+</head>
+
+<body>
+<div data-component="/components/header.html"></div>
+  <main class="content">
+    <h1>Electronics</h1>
+    <div class="filters">
+      <div class="filter">
+        <button class="filter-btn">Recency ▾</button>
+        <div class="filter-dropdown">
+          <p>24 Hours</p>
+          <p>1 Week</p>
+          <p>30 Days</p>
+          <p>30+ Days</p>
+        </div>
+      </div>
+
+      <div class="filter">
+        <button class="filter-btn">Price ▾</button>
+        <div class="filter-dropdown">
+          <p>Low to High</p>
+          <p>High to Low</p>
+          <p>Free</p>
+        </div>
+      </div>
+
+      <div class="filter">
+        <button class="filter-btn">Condition ▾</button>
+        <div class="filter-dropdown">
+          <p>New</p>
+          <p>Like New</p>
+          <p>Used - Good</p>
+          <p>Used - Okay</p>
+        </div>
+      </div>
+    </div>
+    <div class="product-grid" id="product-grid"></div>
+  </main>
+  <div data-component="/components/footer.html"></div>
+  <script src="/scripts/loadComponents.js"></script>
+  <script src="/scripts/products.js"></script>
+</body>
+</html>
