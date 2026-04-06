@@ -33,7 +33,7 @@ const mockProducts = [
 const grid = document.getElementById("product-grid");
 
 // Load template first
-fetch("/components/productCard.html")
+fetch("components/productCard.html")
   .then(res => res.text())
   .then(template => {
     
