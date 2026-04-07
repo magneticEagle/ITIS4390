@@ -25,7 +25,7 @@ body {
   color: var(--text);
 }
 
-/* Links/links inherit the surrounding text color */
+/* Links will no longer be purple */
 a {
   color: inherit;
   text-decoration: none;
@@ -71,11 +71,9 @@ textarea {
 .logo {
   width: 36px;
   height: 36px;
-  border-radius: 50%;
-  /* circle */
+  border-radius: 50%; /* circle */
   background: var(--panel-bg);
-  display: flex;
-  /* centers the logo word, will remove the text for the actual logo in real implementaiton */
+  display: flex; /* centers the logo word */
   align-items: center;
   justify-content: center;
   font-size: 0.7rem;
@@ -97,7 +95,7 @@ textarea {
   border-radius: 8px;
 }
 
-/* Temporary text for the msgs and acct buttons, will eventually be replaced by logos */
+/* Temporary text for the msgs and acct buttons */
 .header-box {
   min-width: 48px;
   height: 32px;
@@ -116,7 +114,6 @@ textarea {
   display: none;
 }
 
-/* This is the functionality for the hamburger button on mobile */
 /* Adjusting the menu for mobile users to the right within the flex row */
 .mobile-nav {
   position: relative;
@@ -170,7 +167,7 @@ textarea {
   gap: 0.5rem;
 }
 
-/* Pads the mobile menu and background/border for buttons, no textual links */
+/* Pads the mobile menu and background/border */
 .mobile-menu a {
   border: 1px solid var(--border);
   background: var(--panel-bg);
@@ -296,7 +293,7 @@ textarea {
   padding: 0.75rem 1rem;
 }
 
-/* The inner container that limits width/evenly aligns nav buttons in four columns*/
+/* The inner container that limits width/evenly aligns nav buttons for the footer */
 .bottom-nav-inner {
   max-width: 1240px;
   margin: 0 auto;
@@ -305,7 +302,7 @@ textarea {
   gap: 0.75rem;
 }
 
-/* Each bottom navigation item has a consistent box/border/etc*/
+/* Each bottom navigation item */
 .bottom-nav a {
   background: var(--panel-bg);
   border: 1px solid var(--border);
@@ -440,6 +437,7 @@ textarea {
 
 /* The desktop layout */
 @media (min-width: 980px) {
+  /* Hides the mobile nav on desktop */
   .menu-toggle,
   .mobile-menu,
   .bottom-nav {
@@ -450,7 +448,7 @@ textarea {
     flex-wrap: wrap;
   }
 
-  /* Reveals the desktop nav */
+  /* Reveals the desktop nav header bar */
   .desktop-nav {
     width: 100%;
     display: flex;
@@ -459,79 +457,13 @@ textarea {
     padding-top: 0.2rem;
     border-top: 1px solid var(--border);
   }
-
+  /* Adds a little bit of spacing to the desktop header bar */
   .desktop-nav a {
     padding: 0.25rem 0;
   }
 
   .main-card {
     padding: 0.95rem;
-  }
-
-  /* The product page desktop layout */
-  .product-main {
-    grid-template-columns: minmax(0, 1fr) 260px;
-    grid-template-areas:
-      "image buttons"
-      "header seller"
-      "details seller"
-      "description seller"
-      "location location";
-    align-items: start;
-    column-gap: 1rem;
-    row-gap: 1rem;
-  }
-
-  .product-image-wrap {
-    grid-area: image;
-  }
-
-  .product-header {
-    grid-area: header;
-  }
-
-  .product-buttons {
-    grid-area: buttons;
-    grid-template-columns: 1fr;
-    align-self: start;
-  }
-
-  .product-details-block {
-    grid-area: details;
-  }
-
-  .product-description {
-    grid-area: description;
-  }
-
-  .seller-block {
-    grid-area: seller;
-    border-left: 1px solid var(--border);
-    padding-left: 1rem;
-    min-height: 100%;
-    align-content: start;
-  }
-
-  .seller-block .section-title {
-    text-align: center;
-  }
-
-  .product-location {
-    grid-area: location;
-  }
-
-  /* Listing page desktop only layout */
-  .listing-page {
-    grid-template-columns: 2fr 1fr;
-    gap: 1.25rem;
-  }
-
-  .listing-side {
-    border-left: 1px solid var(--border);
-    padding-left: 1rem;
-    display: grid;
-    align-content: start;
-    gap: 1rem;
   }
 
   /* Header icon buttons */

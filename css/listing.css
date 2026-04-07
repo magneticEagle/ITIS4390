@@ -1,0 +1,81 @@
+  /* The product page desktop layout */
+  .product-main {
+    grid-template-columns: minmax(0, 1fr) 260px;
+    grid-template-areas:
+      "image buttons"
+      "header seller"
+      "details seller"
+      "description seller"
+      "location location";
+    align-items: start;
+    column-gap: 1rem;
+    row-gap: 1rem;
+  }
+
+  .product-image-wrap {
+    grid-area: image;
+  }
+
+  .product-header {
+    grid-area: header;
+  }
+
+  .product-buttons {
+    grid-area: buttons;
+    grid-template-columns: 1fr;
+    align-self: start;
+  }
+
+  .product-details-block {
+    grid-area: details;
+  }
+
+  .product-description {
+    grid-area: description;
+  }
+
+  .seller-block {
+    grid-area: seller;
+    border-left: 1px solid var(--border);
+    padding-left: 1rem;
+    min-height: 100%;
+    align-content: start;
+  }
+
+  .seller-block .section-title {
+    text-align: center;
+  }
+
+  .product-location {
+    grid-area: location;
+  }
+
+  /* Listing page desktop only layout */
+  .listing-page {
+    grid-template-columns: 2fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .listing-side {
+    border-left: 1px solid var(--border);
+    padding-left: 1rem;
+    display: grid;
+    align-content: start;
+    gap: 1rem;
+  }
+
+  /* Listing page layout */
+.listing-page {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-block {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.listing-page .section-title {
+  margin-top: 0.35rem;
+  margin-bottom: 0.15rem;
+}
