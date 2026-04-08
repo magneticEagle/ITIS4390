@@ -11,6 +11,7 @@
   --border: #9f9f9f;
   --white: #ffffff;
   --important: #0968f6;
+  --wishlist-red: #d64b63; /* Added for wishlist button */
 }
 
 /* Gives space between boxes/buttons */
