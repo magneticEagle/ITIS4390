@@ -256,6 +256,20 @@ textarea {
   background: var(--button-light);
   border-radius: 10px;
   cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+              background-color 0.18s ease, color 0.18s ease,
+              border-color 0.18s ease;  /* ADDED 4/7/2026 */
+}
+
+/* ADDED 4/7/2026 */
+.button-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* ADDED 4/7/2026 */
+.button-box:active {
+  transform: scale(0.98);
 }
 
 /* The button that demands the users attention! Can be swapped for blue later */
@@ -283,6 +297,18 @@ textarea {
 .wishlist-btn::before {
   content: "♡";
   font-size: 1rem;
+}
+
+/* ADDED 4/7/2026 */
+.wishlist-btn.is-liked {
+  color: var(--wishlist-red);
+  border-color: var(--wishlist-red);
+  background: #fff5f7; /* Perfect paleish pink to indicate its been clicked */
+}
+
+/* ADDED 4/7/2026 */
+.wishlist-btn.is-liked::before {
+  content: "♥";
 }
 
 /* Navigation footer for mobile screen ONLY */
