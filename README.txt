@@ -10,7 +10,7 @@ Search Page: Matvey
 
 Instructions:
 
-1.) Download and IDE, such as VS Code
+1.) Download an IDE, such as VS Code
 
 2.) Install the live server plugin if you do not have it already
 
