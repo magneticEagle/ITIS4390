@@ -77,7 +77,7 @@
     .listing-page {
       grid-template-columns: 2fr 1fr;
       gap: 1.25rem;
-  }
+    }
 
   .listing-side {
     border-left: 1px solid var(--border);
