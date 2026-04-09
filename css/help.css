@@ -1,0 +1,284 @@
+:root {
+  /* The consistent site colors (subject to change) */
+  --page-bg: #d8d8d8;
+  --header-bg: #b8b8b8;
+  --panel-bg: #efefef;
+  --card-bg: #d0d0d0;
+  --placeholder-bg: #b3b3b3;
+  --button-dark: #6b6666;
+  --button-light: #b9b3b3;
+  --text: #1d1d1d;
+  --border: #9f9f9f;
+  --white: #ffffff;
+  --important: #0968f6;
+}
+
+/* Gives space between boxes/buttons */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--page-bg);
+  color: var(--text);
+}
+
+/* Links will no longer be purple */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* main page box, key for visuals and readability */
+.page-shell {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 1rem 1rem;
+}
+
+/* whole header area */
+.site-header {
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--border);
+}
+
+/* the whole header row and search bar */
+.header-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0 0.55rem;
+}
+
+/* the temporary blank logo circle */
+.logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%; /* circle */
+  background: var(--panel-bg);
+  display: flex; /* centers the logo word */
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  flex-shrink: 0;
+}
+
+/* The search area, flex lets it take up space in the row */
+.search-wrap {
+  flex: 1;
+}
+
+/* The text field for the search area */
+.search-wrap input {
+  width: 100%;
+  height: 32px;
+  border: 1px solid var(--border);
+  background: var(--panel-bg);
+  padding: 0 0.75rem;
+  border-radius: 8px;
+}
+
+/* Temporary text for the msgs and acct buttons */
+.header-box {
+  min-width: 48px;
+  height: 32px;
+  padding: 0 0.5rem;
+  border: 1px solid var(--border);
+  background: var(--panel-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  border-radius: 8px;
+}
+
+/* Header icon buttons */
+.icon-btn {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* The navigation for desktop users, not displayed on mobile */
+.desktop-nav {
+  display: none;
+}
+
+/* Adjusting the menu for mobile users to the right within the flex row */
+.mobile-nav {
+  position: relative;
+  margin-left: auto;
+}
+
+/* This is the functionality for the hamburger button on mobile */
+.menu-toggle {
+  width: 40px;
+  height: 32px;
+  border: 1px solid var(--border);
+  background: var(--panel-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 8px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+/* These are the actual hamburger lines for the menu */
+.menu-toggle span {
+  height: 2px;
+  background: var(--text);
+  display: block;
+}
+
+/* The mobile menu dropdown. Visible when the details element is used. No JS needed */
+.mobile-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  width: 150px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  padding: 0.5rem;
+  z-index: 20;
+  border-radius: 10px;
+}
+
+/* A call to reveal the mobile menu when the details element is used */
+.mobile-nav[open] .mobile-menu {
+  display: block;
+}
+
+/* This is the stack of mobile links */
+.mobile-menu nav {
+  display: grid;
+  gap: 0.5rem;
+}
+
+/* Pads the mobile menu and background/border */
+.mobile-menu a {
+  border: 1px solid var(--border);
+  background: var(--panel-bg);
+  padding: 0.75rem;
+  text-align: center;
+  border-radius: 8px;
+}
+
+/* Navigation footer for mobile screen ONLY */
+.bottom-nav {
+  position: sticky; /* maintains the visibility */
+  bottom: 0;
+  background: var(--header-bg);
+  border-top: 1px solid var(--border);
+  padding: 0.75rem 1rem;
+}
+
+/* The inner container that limits width/evenly aligns nav buttons for the footer */
+.bottom-nav-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+/* Each bottom navigation item */
+.bottom-nav a {
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  border-radius: 8px;
+}
+
+/* This adjusts the layout to desktop */
+@media (min-width: 980px) {
+
+  /* Hides the mobile nav on desktop */
+  .menu-toggle,
+  .mobile-menu,
+  .bottom-nav {
+    display: none;
+  }
+
+  .header-row {
+    flex-wrap: wrap;
+  }
+
+  /* Reveals the desktop nav header bar */
+  .desktop-nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding-top: 0.2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* Adds a little bit of spacing to the desktop header bar */
+  .desktop-nav a {
+    padding: 0.25rem 0;
+  }
+}
+
+/* Help Page Styling */
+.help-page {
+  background: #d4d4d4;
+  min-height: 100vh;
+  padding: 32px 16px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.help-page-title {
+  font-size: 24px;
+  font-weight: 800;
+  text-decoration: underline;
+  margin-bottom: 32px;
+  color: #111;
+  text-align: left;
+  width: 100%;
+  max-width: 820px;
+}
+
+.accordion-list {
+  width: 100%;
+  max-width: 820px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.accordion-item {
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  min-height: 58px;
+  padding: 0.9rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.accordion-item span {
+  font-weight: 600;
+}
+
+.accordion-item-button {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
