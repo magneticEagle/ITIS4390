@@ -146,5 +146,15 @@
   <a href="help.html" aria-label="Help">🛈</a>
 </div>
     </div>
+    <script>
+  const postBtn = document.getElementById("postBtn");
+  postBtn.addEventListener("click", function () {
+    postBtn.disabled = true;
+    postBtn.textContent = "Posting...";
+    setTimeout(() => {
+      window.location.href = "product.html?posted=1";
+    }, 1200);
+  });
+</script>
 </body>
 </html>
