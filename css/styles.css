@@ -513,4 +513,20 @@ textarea {
   border: 1px solid var(--border);
   border-radius: 8px;
 }
+  .post-banner {
+  position: fixed;
+  top: -60px;
+  left: 0;
+  width: 100%;
+  background: var(--important);
+  color: var(--white);
+  text-align: center;
+  padding: 1rem;
+  font-weight: bold;
+  transition: top 0.3s ease;
+  z-index: 1000;
+}
+.post-banner.show {
+  top: 0;
+}
 }
