@@ -18,9 +18,15 @@
         <a class="logo" href="#">Logo</a>
 
         <!-- Search bar -->
-        <div class="search-wrap">
-          <input type="text" placeholder="Search" aria-label="Product search">
+      <div class="search-wrap">
+        <input type="text" id="search-input" placeholder="Search" aria-label="Product search">
+        <ul id="search-results" class="search-results hidden"></ul>
+        <!-- Full page loading overlay -->
+        <div id="loading-overlay" class="loading-overlay hidden">
+          <div class="spinner"></div>
+          <p>Searching...</p>
         </div>
+      </div>
 
         <!-- Quick links -->
 <a class="header-box icon-btn" href="#" aria-label="Messages">
