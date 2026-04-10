@@ -1,0 +1,536 @@
+:root {
+  /* The consistent site colors (subject to change) */
+  --page-bg: #d8d8d8;
+  --header-bg: #b8b8b8;
+  --panel-bg: #efefef;
+  --card-bg: #d0d0d0;
+  --placeholder-bg: #b3b3b3;
+  --button-dark: #6b6666;
+  --button-light: #b9b3b3;
+  --text: #1d1d1d;
+  --border: #9f9f9f;
+  --white: #ffffff;
+  --important: #0968f6;
+  --wishlist-red: #d64b63; /* Added for wishlist button */
+}
+
+/* Gives space between boxes/buttons */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--page-bg);
+  color: var(--text);
+  padding-bottom: 72px;
+}
+
+/* Links will no longer be purple */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Images wont flow over outside of their container (product images) */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherits color for all of the text fields and buttons/inputs etc */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+/* main page box, key for visuals and readability */
+.page-shell {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 1rem 1rem;
+}
+
+/* whole header area */
+.site-header {
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--border);
+}
+
+/* the whole header row and search bar */
+.header-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0 0.55rem;
+}
+
+/* the temporary blank logo circle */
+.logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%; /* circle */
+  background: var(--panel-bg);
+  display: flex; /* centers the logo word */
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  flex-shrink: 0;
+}
+
+/* The search area, flex lets it take up space in the row */
+.search-wrap {
+  flex: 1;
+}
+
+/* The text field for the search area */
+.search-wrap input {
+  width: 100%;
+  height: 32px;
+  border: 1px solid var(--border);
+  background: var(--panel-bg);
+  padding: 0 0.75rem;
+  border-radius: 8px;
+}
+
+/* Temporary text for the msgs and acct buttons */
+.header-box {
+  min-width: 48px;
+  height: 32px;
+  padding: 0 0.5rem;
+  border: 1px solid var(--border);
+  background: var(--panel-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  border-radius: 8px;
+}
+
+/* The navigation for desktop users, not displayed on mobile */
+.desktop-nav {
+  display: none;
+}
+
+/* Adjusting the menu for mobile users to the right within the flex row */
+.mobile-nav {
+  position: relative;
+  margin-left: auto;
+}
+
+/* This is the functionality for the hamburger button on mobile */
+.menu-toggle {
+  width: 40px;
+  height: 32px;
+  border: 1px solid var(--border);
+  background: var(--panel-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 8px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+/* These are the actual hamburger lines for the menu */
+.menu-toggle span {
+  height: 2px;
+  background: var(--text);
+  display: block;
+}
+
+/* The mobile menu dropdown. Visible when the details element is used. No JS needed */
+.mobile-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  width: 150px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  padding: 0.5rem;
+  z-index: 20;
+  border-radius: 10px;
+}
+
+/* A call to reveal the mobile menu when the details element is used */
+.mobile-nav[open] .mobile-menu {
+  display: block;
+}
+
+/* This is the stack of the mobile links */
+.mobile-menu nav {
+  display: grid;
+  gap: 0.5rem;
+}
+
+/* Pads the mobile menu and background/border */
+.mobile-menu a {
+  border: 1px solid var(--border);
+  background: var(--panel-bg);
+  padding: 0.75rem;
+  text-align: center;
+  border-radius: 8px;
+}
+
+/* The background within pages and padding to group content */
+.main-card {
+  background: var(--card-bg);
+  padding: 0.9rem;
+  border-radius: 12px;
+}
+
+/* USED FOR MAIN HEADINGS, IE: LISTING INFO/ITEM DETAILS/SELLER */
+.section-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0 0 0.5rem;
+}
+
+/* Shrinks the City,State area nicely */
+.muted-text,
+.small-text {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Shrinks the Listed (time) age area so that it's smaller than the City,State */
+.small-text {
+  font-size: 0.75rem;
+}
+
+/* The gray boxes for product images and map locations. will be replaced later */
+.placeholder-box {
+  background: var(--placeholder-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 220px;
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+/* The form fields all have same width/background/border/padding */
+.input,
+.select,
+.textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: var(--panel-bg);
+  padding: 0.65rem;
+  border-radius: 10px;
+}
+
+/* Sets the minimum height for the descript field instead of the large box. */
+.textarea {
+  min-height: 120px;
+  resize: none; /*Prevents user from manually resizing field with mouse */
+}
+
+/* Prevents the stacking of the price and location area, instead is side by side */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+/* Side by side grid for listing page buttons and product page buttons */
+.button-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Sizes the button placeholders/border/background/etc */
+.button-box {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  background: var(--button-light);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+              background-color 0.18s ease, color 0.18s ease,
+              border-color 0.18s ease;  /* ADDED 4/7/2026 */
+}
+
+/* ADDED 4/7/2026 */
+.button-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* ADDED 4/7/2026 */
+.button-box:active {
+  transform: scale(0.98);
+}
+
+/* The button that demands the users attention! Can be swapped for blue later */
+.button-box.dark {
+  background: var(--important); /* UPDATED */
+  color: var(--white);
+  border: 1px solid var(--important);
+}
+
+/* NEW: outline style (Wishlist + Cancel) */
+.button-box.outline {
+  background: var(--white);
+  color: var(--important);
+  border: 1px solid var(--important);
+}
+
+/* Wishlist heart. will later be functional */
+.wishlist-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.wishlist-btn::before {
+  content: "♡";
+  font-size: 1rem;
+}
+
+/* ADDED 4/7/2026 */
+.wishlist-btn.is-liked {
+  color: var(--wishlist-red);
+  border-color: var(--wishlist-red);
+  background: #fff5f7; /* Perfect paleish pink to indicate its been clicked */
+}
+
+/* ADDED 4/7/2026 */
+.wishlist-btn.is-liked::before {
+  content: "♥";
+}
+
+/* Navigation footer for mobile screen ONLY */
+.bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--header-bg);
+  border-top: 1px solid var(--border);
+  padding: 0.75rem 1rem;
+  z-index: 1000;
+}
+
+/* The inner container that limits width/evenly aligns nav buttons for the footer */
+.bottom-nav-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+/* Each bottom navigation item */
+.bottom-nav a {
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  border-radius: 8px;
+}
+
+/* main container for product page */
+.product-page {
+  display: grid;
+  gap: 1.25rem;
+}
+
+/* the inner content section and handles spacing between content */
+.product-main {
+  display: grid;
+  gap: 1rem;
+}
+
+/* Groups the product image and the coursel dots */
+.product-image-wrap {
+  display: grid;
+  gap: 0.55rem;
+}
+
+/* The sample carousel dots (eventually will dynamically change when swiped) */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  margin: 0;
+}
+
+/* makes them small and circular */
+.carousel-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #111;
+}
+
+/* section around the title/location/listed time/price/etc. does spacing */
+.product-header {
+  display: grid;
+  gap: 0.25rem;
+}
+
+/* Adds a two column grid to separate the title/location from the price on the right*/
+.product-heading-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 1rem;
+}
+
+/* Makes the price bold and avoids it wrapping onto another line. PRICE = KEY for user attention*/
+.product-price {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Spaces details for product/description/seller/location */
+.info-block {
+  display: grid;
+  gap: 0.45rem;
+}
+
+/* cleans up the product details list and improves the visual */
+.details-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+/* Lays out the seller avatar sample image in line with the seller name */
+.seller-row {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+/* temporary placeholder image profile pic, will eventually be user image. fixed dimensions*/
+.seller-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--button-dark);
+  flex-shrink: 0;
+}
+
+/* more vertical line spacing in this section*/
+.seller-block {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+/* more spacing between the word "Seller" sell the header is clear and above the content*/
+.seller-block .section-title {
+  margin-bottom: 0.7rem;
+}
+
+/* grows the seller name compared to the other text for hierarchy*/
+.seller-block .muted-text {
+  font-size: 1rem;
+}
+
+/* the smaller text below the seller name for review statistics*/
+.seller-block .small-text {
+  font-size: 0.82rem;
+}
+
+/* Listing page layout */
+.listing-page {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-block {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.listing-page .section-title {
+  margin-top: 0.35rem;
+  margin-bottom: 0.15rem;
+}
+
+/* The desktop layout */
+@media (min-width: 980px) {
+  /* Hides the mobile nav on desktop */
+  .menu-toggle,
+  .mobile-menu,
+  .bottom-nav {
+    display: none;
+  }
+
+  .header-row {
+    flex-wrap: wrap;
+  }
+
+  /* Reveals the desktop nav header bar */
+  .desktop-nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding-top: 0.2rem;
+    border-top: 1px solid var(--border);
+  }
+  /* Adds a little bit of spacing to the desktop header bar */
+  .desktop-nav a {
+    padding: 0.25rem 0;
+  }
+
+  .main-card {
+    padding: 0.95rem;
+  }
+
+  /* Header icon buttons */
+.icon-btn {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1rem;
+  line-height: 1;
+
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+}
+
+/* The post success banner */
+.post-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--important);
+  color: var(--white);
+  text-align: center;
+  padding: 1rem;
+  font-weight: bold;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+  z-index: 9999;
+}
+
+.post-banner.show {
+  transform: translateY(0);
+}

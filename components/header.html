@@ -1,42 +1,47 @@
+<!-- header -->
 <header class="site-header">
   <div class="page-shell">
     <div class="header-row">
-
-      <!-- Logo ( will eventually be an image and not textual) -->
+      <!-- temp logo before we design one -->
       <a class="logo" href="#">Logo</a>
 
-      <!-- Non working search bar for now -->
+      <!-- Search bar -->
       <div class="search-wrap">
-        <input type="text" placeholder="Product Search" aria-label="Product search">
+        <input type="text" placeholder="Search" aria-label="Product search">
       </div>
 
-      <!-- The messages and account buttons -->
-      <a class="header-box" href="#">Msgs</a>
-      <a class="header-box" href="#">Acct</a>
+      <!-- message inbox and account -->
+      <a class="header-box icon-btn" href="#" aria-label="Messages">
+        <span>✉</span>
+      </a>
+      <a class="header-box icon-btn" href="#" aria-label="Account">
+        <span>𖨆</span>
+      </a>
 
-      <!-- The hamburger menu which appears on the mobile screen size -->
+      <!-- mobile hamburger menu -->
       <details class="mobile-nav">
         <summary class="menu-toggle" aria-label="Open menu">
           <span></span>
           <span></span>
           <span></span>
         </summary>
+
         <div class="mobile-menu">
           <nav aria-label="Mobile navigation">
-            <a href="#">Home</a>
-            <a href="#">Search</a>
-            <a href="#">Post</a>
-            <a href="#">Help</a>
+            <a href="index.html">Home</a>
+            <a href="search.html">Search</a>
+            <a href="listing.html">Post</a>
+            <a href="help.html">Help</a>
           </nav>
         </div>
       </details>
 
-      <!-- When the hamburger menu is not in use / when the user is on desktop -->
+      <!-- desktop nav -->
       <nav class="desktop-nav" aria-label="Desktop navigation">
-        <a href="#">Home</a>
-        <a href="#">Search</a>
-        <a href="#">Post</a>
-        <a href="#">Help</a>
+        <a href="index.html">Home</a>
+        <a href="search.html">Search</a>
+        <a href="listing.html">Post</a>
+        <a href="help.html">Help</a>
       </nav>
     </div>
   </div>

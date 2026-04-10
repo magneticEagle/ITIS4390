@@ -1,0 +1,158 @@
+/* BASIC RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BASE STYLES */
+
+body {
+  line-height: 1.5;
+}
+
+/* Header icon buttons */
+.icon-btn {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+
+/* HOME PAGE */
+.home-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 1rem 5.5rem;
+}
+
+.content-section {
+  margin-bottom: 2rem;
+}
+
+.content-section h1 {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  justify-items: center;
+  padding: 0 0.05rem;
+}
+
+/* hide 3rd card on mobile*/
+.product-card:nth-child(3) {
+  display: none;
+}
+
+.product-card {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.product-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #aaa5a5;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.25rem 1rem;
+  border-radius: 12px;
+}
+
+.product-image span {
+  display: block;
+  padding-bottom: 25px;
+  padding-top: 15px;
+  font-size: 1.25rem;
+}
+
+/* The inner container that limits width/evenly aligns nav buttons for the footer */
+.bottom-nav-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+/* Each bottom navigation item */
+.bottom-nav a {
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  border-radius: 8px;
+}
+
+/* desktop */
+@media (min-width: 980px) {
+  .menu-toggle,
+  .mobile-menu,
+  .bottom-nav {
+    display: none;
+  }
+
+  .header-row {
+    flex-wrap: wrap;
+  }
+
+  /* Reveals the desktop nav header bar */
+  .desktop-nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding-top: 0.2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* Adds a little bit of spacing to the desktop header bar */
+  .desktop-nav a {
+    padding: 0.25rem 0;
+  }
+
+  .home-page {
+    padding: 1.5rem 4rem 1rem 4rem;
+  }
+
+  .content-section {
+    margin-bottom: 3rem;
+  }
+
+  .content-section h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.2rem;
+    padding-left: 3.8rem;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 0;
+  }
+
+  .product-card:nth-child(3) {
+    display: block;
+  }
+
+  .product-image {
+    width: 100%;
+    max-width: 240px;
+  }
+}
