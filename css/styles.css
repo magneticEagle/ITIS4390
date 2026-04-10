@@ -615,3 +615,23 @@ textarea {
   border-radius: 8px;
 }
 }
+
+/* The post success banner */
+.post-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--important);
+  color: var(--white);
+  text-align: center;
+  padding: 1rem;
+  font-weight: bold;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+  z-index: 9999;
+}
+
+.post-banner.show {
+  transform: translateY(0);
+}

@@ -130,7 +130,7 @@
 
         <!-- Action buttons -->
         <div class="button-row">
-<div class="button-box dark">Post</div>
+<button id="postBtn" class="button-box dark">Post</button>
 <div class="button-box outline">Cancel</div>
         </div>
       </aside>
@@ -146,6 +146,16 @@
   <a href="help.html" aria-label="Help">🛈</a>
 </div>
     </div>
+    <script>
+  const postBtn = document.getElementById("postBtn");
+  postBtn.addEventListener("click", function () {
+    postBtn.disabled = true;
+    postBtn.textContent = "Posting...";
+    setTimeout(() => {
+      window.location.href = "product.html?posted=1";
+    }, 1200);
+  });
+</script>
 <script src="scripts/search.js"></script>
   </body>
 </html>

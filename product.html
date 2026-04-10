@@ -59,6 +59,10 @@
     </div>
   </header>
 
+  <div id="postBanner" class="post-banner">
+  Your post is live!
+  </div>
+
   <!-- Main page content -->
   <main class="page-shell">
     <section class="main-card product-page">
@@ -145,6 +149,16 @@
     </div>
     <!-- UPDATED: 4/7/2026 -->
     <script src="scripts/productInteractions.js"></script>
+  <script>
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("posted") === "1") {
+    const banner = document.getElementById("postBanner");
+    banner.classList.add("show");
+    setTimeout(() => {
+      banner.classList.remove("show");
+    }, 3000);
+  }
+</script>
     <script src="scripts/search.js"></script>
 </body>
 </html>
