@@ -513,9 +513,12 @@ textarea {
   border: 1px solid var(--border);
   border-radius: 8px;
 }
-  .post-banner {
+}
+
+/* The ost success banner */
+.post-banner {
   position: fixed;
-  top: -60px;
+  top: 0;
   left: 0;
   width: 100%;
   background: var(--important);
@@ -523,10 +526,11 @@ textarea {
   text-align: center;
   padding: 1rem;
   font-weight: bold;
-  transition: top 0.3s ease;
-  z-index: 1000;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+  z-index: 9999;
 }
+
 .post-banner.show {
-  top: 0;
-}
+  transform: translateY(0);
 }
