@@ -313,11 +313,14 @@ textarea {
 
 /* Navigation footer for mobile screen ONLY */
 .bottom-nav {
-  position: sticky; /* maintains the visibility */
+  position: fixed;
+  left: 0;
+  right: 0;
   bottom: 0;
   background: var(--header-bg);
   border-top: 1px solid var(--border);
   padding: 0.75rem 1rem;
+  z-index: 1000;
 }
 
 /* The inner container that limits width/evenly aligns nav buttons for the footer */
