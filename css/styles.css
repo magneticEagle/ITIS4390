@@ -1,12 +1,12 @@
 :root {
   /* The consistent site colors (subject to change) */
-  --page-bg: #d8d8d8;
-  --header-bg: #b8b8b8;
-  --panel-bg: #efefef;
+  --page-bg: #f4f7fb;
+  --header-bg: #b0d2fe;
+  --panel-bg: #ffffff;
   --card-bg: #d0d0d0;
   --placeholder-bg: #b3b3b3;
-  --button-dark: #6b6666;
-  --button-light: #b9b3b3;
+  --button-dark: #1e3a5f;
+  --button-light: #ff8a3d;
   --text: #1d1d1d;
   --border: #9f9f9f;
   --white: #ffffff;
@@ -170,17 +170,25 @@ textarea {
   to { transform: rotate(360deg); }
 }
 
-/* the temporary blank logo circle */
+/* Site logo: fixed circle; image is cropped with object-fit */
 .logo {
   width: 36px;
   height: 36px;
-  border-radius: 50%; /* circle */
+  border-radius: 50%;
+  overflow: hidden;
   background: var(--panel-bg);
-  display: flex; /* centers the logo word */
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.7rem;
   flex-shrink: 0;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 /* The search area, flex lets it take up space in the row */
@@ -446,6 +454,117 @@ textarea {
   border-radius: 8px;
 }
 
+/* Shared product cards (search grid + home sections) */
+article.product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+article.product-card:hover {
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
+  transform: translateY(-4px);
+}
+
+.product-card-link {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  color: inherit;
+}
+
+.product-card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: var(--placeholder-bg);
+}
+
+.product-card-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-card .product-info {
+  padding: 0.75rem 0.85rem 0.45rem;
+  flex: 1;
+}
+
+.product-card .product-info h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.product-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+  align-items: center;
+  margin: 0 0 0.4rem;
+  font-size: 0.78rem;
+  color: #555;
+}
+
+.condition-pill {
+  display: inline-block;
+  padding: 0.12rem 0.5rem;
+  border-radius: 999px;
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  font-size: 0.72rem;
+}
+
+.posted-text {
+  color: #666;
+}
+
+.product-card .price {
+  margin: 0.15rem 0;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.product-card .shipping {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.product-card-footer {
+  padding: 0 0.85rem 0.75rem;
+  margin-top: auto;
+}
+
+.product-card .save-btn {
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--button-dark);
+  color: var(--white);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: filter 0.15s ease;
+}
+
+.product-card .save-btn:hover {
+  filter: brightness(1.1);
+}
+
 /* main container for product page */
 .product-page {
   display: grid;
@@ -462,6 +581,15 @@ textarea {
 .product-image-wrap {
   display: grid;
   gap: 0.55rem;
+}
+
+.product-hero-image {
+  width: 100%;
+  display: block;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+  background: var(--placeholder-bg);
 }
 
 /* The sample carousel dots (eventually will dynamically change when swiped) */
@@ -592,6 +720,11 @@ textarea {
   /* Adds a little bit of spacing to the desktop header bar */
   .desktop-nav a {
     padding: 0.25rem 0;
+  }
+
+  .desktop-nav a[aria-current="page"] {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
   }
 
   .main-card {

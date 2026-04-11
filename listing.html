@@ -11,59 +11,7 @@
 </head>
 <body>
   <!-- Top header -->
-  <header class="site-header">
-    <div class="page-shell">
-      <div class="header-row">
-        <!-- Logo -->
-        <a class="logo" href="#">Logo</a>
-
-        <!-- Search bar -->
-      <div class="search-wrap">
-        <input type="text" id="search-input" placeholder="Search" aria-label="Product search">
-        <ul id="search-results" class="search-results hidden"></ul>
-        <!-- Full page loading overlay -->
-        <div id="loading-overlay" class="loading-overlay hidden">
-          <div class="spinner"></div>
-          <p>Searching...</p>
-        </div>
-      </div>
-
-        <!-- Quick links -->
-<a class="header-box icon-btn" href="#" aria-label="Messages">
-  <span>✉</span>
-</a>
-<a class="header-box icon-btn" href="#" aria-label="Account">
-  <span>𖨆</span>
-</a>
-
-        <!-- Mobile hamburger menu -->
-        <details class="mobile-nav">
-          <summary class="menu-toggle" aria-label="Open menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </summary>
-
-          <div class="mobile-menu">
-            <nav aria-label="Mobile navigation">
-              <a href="index.html">Home</a>
-              <a href="search.html">Search</a>
-              <a href="listing.html"><strong>Post</strong></a>
-              <a href="help.html">Help</a>
-            </nav>
-          </div>
-        </details>
-
-        <!-- Desktop navigation -->
-        <nav class="desktop-nav" aria-label="Desktop navigation">
-          <a href="index.html">Home</a>
-          <a href="search.html">Search</a>
-          <a href="listing.html"><strong>Post</strong></a>
-          <a href="help.html">Help</a>
-        </nav>
-      </div>
-    </div>
-  </header>
+  <div data-component="components/header.html"></div>
 
   <!-- Main page content -->
   <main class="page-shell">
@@ -143,15 +91,7 @@
     </section>
   </main>
 
-  <!-- Bottom nav for mobile -->
-  <div class="bottom-nav">
-<div class="bottom-nav-inner">
-  <a href="index.html" aria-label="Home">⌂</a>
-  <a href="search.html" aria-label="Search">⌕</a>
-  <a href="listing.html" aria-label="Post">✎</a>
-  <a href="help.html" aria-label="Help">🛈</a>
-</div>
-    </div>
+  <div data-component="components/footer.html"></div>
     <script>
   const postBtn = document.getElementById("postBtn");
   postBtn.addEventListener("click", function () {
