@@ -14,7 +14,7 @@ Instructions:
 
 2.) Install the live server plugin if you do not have it already
 
-3.) Download the assignment10_group7.zip file and unzip it
+3.) Download the assignment11_group7.zip file and unzip it
 
 4.) Open the unzipped folder in your IDE
 
