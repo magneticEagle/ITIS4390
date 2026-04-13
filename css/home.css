@@ -42,41 +42,20 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  justify-items: center;
+  /* stretch fills each column so every card (and 1:1 image area) is the same width */
+  justify-items: stretch;
+  align-items: stretch;
   padding: 0 0.05rem;
 }
 
-/* hide 3rd card on mobile*/
-.product-card:nth-child(3) {
+.card-grid article.product-card {
+  width: 100%;
+  min-width: 0;
+}
+
+/* hide 3rd card on mobile */
+.card-grid .product-card:nth-child(3) {
   display: none;
-}
-
-.product-card {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.product-image {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  background: #aaa5a5;
-  color: white;
-  font-weight: bold;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 1.25rem 1rem;
-  border-radius: 12px;
-}
-
-.product-image span {
-  display: block;
-  padding-bottom: 25px;
-  padding-top: 15px;
-  font-size: 1.25rem;
 }
 
 /* The inner container that limits width/evenly aligns nav buttons for the footer */
@@ -147,12 +126,7 @@ body {
     padding: 0;
   }
 
-  .product-card:nth-child(3) {
-    display: block;
-  }
-
-  .product-image {
-    width: 100%;
-    max-width: 240px;
+  .card-grid .product-card:nth-child(3) {
+    display: flex;
   }
 }

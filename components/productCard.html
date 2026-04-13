@@ -1,11 +1,19 @@
-<div class="product-card">
-  <img src="{{image}}" alt="{{title}}" />
-
-  <div class="product-info">
-    <h3>{{title}}</h3>
-    <p class="price">{{price}}</p>
-    <p class="shipping">{{shipping}}</p>
-
-    <button class="save-btn">Save</button>
+<article class="product-card">
+  <a href="product.html?id={{id}}" class="product-card-link">
+    <div class="product-card-media">
+      <img src="{{image}}" alt="{{title}}" width="400" height="400" loading="lazy" />
+    </div>
+    <div class="product-info">
+      <h3>{{title}}</h3>
+      <p class="product-meta">
+        <span class="condition-pill">{{conditionLabel}}</span>
+        <span class="posted-text">{{postedLabel}}</span>
+      </p>
+      <p class="price">{{price}}</p>
+      <p class="shipping">{{shipping}}</p>
+    </div>
+  </a>
+  <div class="product-card-footer">
+    <button type="button" class="save-btn">Save</button>
   </div>
-</div>
+</article>

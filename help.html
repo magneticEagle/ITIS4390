@@ -16,31 +16,51 @@
 
     <div class="accordion-list">
       <div class="accordion-item">
-        <span>Contact Information</span>
-        <svg class="accordion-item-button" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9" />
-        </svg>
+        <button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="help-panel-contact" id="help-trigger-contact">
+          <span>Contact Information</span>
+          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
+        <div class="accordion-panel" id="help-panel-contact" role="region" aria-labelledby="help-trigger-contact" hidden>
+          <p>Email us at <a href="mailto:support@example.com">support@example.com</a> or call (000) 000-0000, Monday–Friday, 9am–5pm.</p>
+        </div>
       </div>
 
       <div class="accordion-item">
-        <span>FAQ's</span>
-        <svg class="accordion-item-button" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9" />
-        </svg>
+        <button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="help-panel-faq" id="help-trigger-faq">
+          <span>FAQ's</span>
+          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
+        <div class="accordion-panel" id="help-panel-faq" role="region" aria-labelledby="help-trigger-faq" hidden>
+          <p>Orders usually ship within 2 business days. Track your package from the link in your confirmation email.</p>
+        </div>
       </div>
 
       <div class="accordion-item">
-        <span>Return Policy</span>
-        <svg class="accordion-item-button" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9" />
-        </svg>
+        <button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="help-panel-returns" id="help-trigger-returns">
+          <span>Return Policy</span>
+          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
+        <div class="accordion-panel" id="help-panel-returns" role="region" aria-labelledby="help-trigger-returns" hidden>
+          <p>Items may not be returned for a refund. All sales are final.</p>
+        </div>
       </div>
 
       <div class="accordion-item">
-        <span>Billing and Payments</span>
-        <svg class="accordion-item-button" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9" />
-        </svg>
+        <button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="help-panel-billing" id="help-trigger-billing">
+          <span>Billing and Payments</span>
+          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
+        <div class="accordion-panel" id="help-panel-billing" role="region" aria-labelledby="help-trigger-billing" hidden>
+          <p>We accept major credit cards and digital wallets. Charges appear as “Market Place” on your statement.</p>
+        </div>
       </div>
     </div>
   </main>
@@ -48,5 +68,6 @@
   <div data-component="components/footer.html"></div>
   <script src="scripts/loadComponents.js"></script>
   <script src="scripts/search.js"></script>
+  <script src="scripts/helpAccordion.js"></script>
 </body>
 </html>

@@ -11,53 +11,7 @@
 </head>
 <body>
   <!-- Top header -->
-  <header class="site-header">
-    <div class="page-shell">
-      <div class="header-row">
-        <!-- Logo -->
-        <a class="logo" href="#">Logo</a>
-
-        <!-- Search bar -->
-        <div class="search-wrap">
-          <input type="text" placeholder="Search" aria-label="Product search">
-        </div>
-
-        <!-- Quick links -->
-<a class="header-box icon-btn" href="#" aria-label="Messages">
-  <span>✉</span>
-</a>
-<a class="header-box icon-btn" href="#" aria-label="Account">
-  <span>𖨆</span>
-</a>
-
-        <!-- Mobile hamburger menu -->
-        <details class="mobile-nav">
-          <summary class="menu-toggle" aria-label="Open menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </summary>
-
-          <div class="mobile-menu">
-            <nav aria-label="Mobile navigation">
-              <a href="index.html">Home</a>
-              <a href="search.html">Search</a>
-              <a href="listing.html">Post</a>
-              <a href="help.html">Help</a>
-            </nav>
-          </div>
-        </details>
-
-        <!-- Desktop navigation -->
-        <nav class="desktop-nav" aria-label="Desktop navigation">
-          <a href="index.html">Home</a>
-          <a href="search.html">Search</a>
-          <a href="listing.html">Post</a>
-          <a href="help.html">Help</a>
-        </nav>
-      </div>
-    </div>
-  </header>
+  <div data-component="components/header.html"></div>
 
   <div id="postBanner" class="post-banner">
   Your post is live!
@@ -138,15 +92,8 @@
     </section>
   </main>
 
-  <!-- Bottom nav for mobile -->
-  <div class="bottom-nav">
-<div class="bottom-nav-inner">
-  <a href="index.html" aria-label="Home">⌂</a>
-  <a href="search.html" aria-label="Search">⌕</a>
-  <a href="listing.html" aria-label="Post">✎</a>
-  <a href="help.html" aria-label="Help">🛈</a>
-</div>
-    </div>
+  <div data-component="components/footer.html"></div>
+    <script src="scripts/products.js"></script>
     <!-- UPDATED: 4/7/2026 -->
     <script src="scripts/productInteractions.js"></script>
   <script>
@@ -160,5 +107,6 @@
   }
 </script>
     <script src="scripts/search.js"></script>
+    <script src="scripts/loadComponents.js"></script>
 </body>
 </html>
