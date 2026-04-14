@@ -16,87 +16,126 @@
   <!-- Main page content -->
   <main class="page-shell">
     <form id="listingForm" novalidate>
-    <section class="main-card listing-page">
-      <!-- Main form area -->
-      <div class="listing-main">
-        <!-- Image upload area -->
-        <div class="form-block">
-          <div class="placeholder-box image-box">
-            <div>
-              <div>Select Images</div>
-              <div class="small-text">(Max: 10)</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Listing info -->
-        <div class="form-block">
-          <h1 class="section-title">Listing Information</h1>
-          <input class="input" type="text" placeholder="Title">
-
-          <!-- Price and ZIP code -->
-          <div class="two-col">
-            <input class="input" type="text" placeholder="Price">
-            <input class="input" type="text" placeholder="ZIP Code">
-          </div>
-        </div>
-
-        <!-- Category -->
-        <div class="form-block">
-          <div class="fake-select">
-            <select class="select">
-              <option>Category</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Description -->
-        <div class="form-block">
-          <textarea class="textarea" placeholder="Description"></textarea>
-        </div>
-      </div>
-
-      <!-- Side area -->
-      <aside class="listing-side">
-        <!-- Item details -->
-        <section class="form-block">
-          <h2 class="section-title">Item Details</h2>
-
-          <div>
-            <div class="fake-select">
-              <select class="select">
-                <option>Condition</option>
-              </select>
+      <section class="main-card listing-page">
+        <!-- Main form area -->
+        <div class="listing-main">
+          <!-- Image upload area -->
+          <div class="form-block">
+            <div class="placeholder-box image-box">
+              <div>
+                <div>Select Images</div>
+                <div class="small-text">(Max: 10)</div>
+              </div>
             </div>
           </div>
 
-          <div>
-            <input class="input" type="text" placeholder="Size">
+          <!-- Listing info -->
+          <div class="form-block">
+            <h1 class="section-title">Listing Information</h1>
+
+            <div class="field-group">
+              <input
+                class="input"
+                type="text"
+                id="title"
+                placeholder="Title"
+                maxlength="50"
+              >
+              <small class="field-message" id="titleMessage"></small>
+            </div>
+
+            <!-- Price and ZIP code -->
+            <div class="two-col">
+              <div class="field-group">
+                <input
+                  class="input"
+                  type="text"
+                  id="price"
+                  placeholder="Price"
+                  inputmode="decimal"
+                >
+                <small class="field-message" id="priceMessage"></small>
+              </div>
+
+              <div class="field-group">
+                <input
+                  class="input"
+                  type="text"
+                  id="zip"
+                  placeholder="ZIP Code"
+                  inputmode="numeric"
+                  maxlength="5"
+                >
+                <small class="field-message" id="zipMessage"></small>
+              </div>
+            </div>
           </div>
 
-          <div>
-            <input class="input" type="text" placeholder="Brand">
+          <!-- Category -->
+          <div class="form-block">
+            <div class="field-group">
+              <div class="fake-select">
+                <select class="select" id="category">
+                  <option value="">Category</option>
+                  <option value="furniture">Furniture</option>
+                  <option value="electronics">Electronics</option>
+                  <option value="clothing">Clothing</option>
+                </select>
+              </div>
+              <small class="field-message" id="categoryMessage"></small>
+            </div>
           </div>
 
-          <div>
-            <input class="input" type="text" placeholder="Model">
+          <!-- Description -->
+          <div class="form-block">
+            <textarea class="textarea" id="description" placeholder="Description (Optional)"></textarea>
           </div>
-        </section>
-
-        <!-- Action buttons -->
-        <div class="button-row">
-<button id="postBtn" class="button-box dark">Post</button>
-<div class="button-box outline">Cancel</div>
         </div>
-      </aside>
-    </section>
+
+        <!-- Side area -->
+        <aside class="listing-side">
+          <!-- Item details -->
+          <section class="form-block">
+            <h2 class="section-title">Item Details</h2>
+
+            <div class="field-group">
+              <div class="fake-select">
+                <select class="select" id="condition">
+                  <option value="">Condition</option>
+                  <option value="new">New</option>
+                  <option value="like-new">Like New</option>
+                  <option value="used">Used</option>
+                </select>
+              </div>
+              <small class="field-message" id="conditionMessage"></small>
+            </div>
+
+            <div class="field-group">
+              <input class="input" type="text" id="size" placeholder="Size (Optional)">
+            </div>
+
+            <div class="field-group">
+              <input class="input" type="text" id="brand" placeholder="Brand (Optional)">
+            </div>
+
+            <div class="field-group">
+              <input class="input" type="text" id="model" placeholder="Model (Optional)">
+            </div>
+          </section>
+
+          <!-- Action buttons -->
+          <div class="button-row">
+            <button id="postBtn" class="button-box dark" type="submit">Post</button>
+            <button class="button-box outline" type="button">Cancel</button>
+          </div>
+        </aside>
+      </section>
     </form>
   </main>
 
   <div data-component="components/footer.html"></div>
-    
-<script src="scripts/search.js"></script>
-<script src="scripts/loadComponents.js"></script>
-<script src="scripts/listingValidation.js"></script>
-  </body>
+  <script src="scripts/search.js"></script>
+  <script src="scripts/loadComponents.js"></script>
+  <script src="scripts/listingValidation.js"></script>
+</body>
 </html>
