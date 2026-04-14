@@ -15,6 +15,7 @@
 
   <!-- Main page content -->
   <main class="page-shell">
+    <form id="listingForm" novalidate>
     <section class="main-card listing-page">
       <!-- Main form area -->
       <div class="listing-main">
@@ -89,20 +90,13 @@
         </div>
       </aside>
     </section>
+    </form>
   </main>
 
   <div data-component="components/footer.html"></div>
-    <script>
-  const postBtn = document.getElementById("postBtn");
-  postBtn.addEventListener("click", function () {
-    postBtn.disabled = true;
-    postBtn.textContent = "Posting...";
-    setTimeout(() => {
-      window.location.href = "product.html?posted=1";
-    }, 1200);
-  });
-</script>
+    
 <script src="scripts/search.js"></script>
 <script src="scripts/loadComponents.js"></script>
+<script src="scripts/listingValidation.js"></script>
   </body>
 </html>
