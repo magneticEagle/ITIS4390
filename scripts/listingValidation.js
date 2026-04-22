@@ -5,6 +5,12 @@ const zip = document.getElementById("zip");
 const category = document.getElementById("category");
 const condition = document.getElementById("condition");
 const postBtn = document.getElementById("postBtn");
+const imageInput = document.getElementById("listingImages");
+const imageMessage = document.getElementById("imageMessage");
+const imagePreviewGrid = document.getElementById("imagePreviewGrid");
+
+const MAX_IMAGES = 10;
+let selectedImageFiles = [];
 
 function showError(input, messageEl, message) {
   input.classList.add("invalid");
@@ -114,6 +120,117 @@ function validateCondition() {
   return true;
 }
 
+function renderImagePreviews() {
+  imagePreviewGrid.innerHTML = "";
+
+  selectedImageFiles.forEach(function (file, index) {
+    const reader = new FileReader();
+
+    reader.addEventListener("load", function () {
+      const previewCard = document.createElement("div");
+      previewCard.className = "image-preview-card";
+
+      const img = document.createElement("img");
+      img.src = reader.result;
+      img.alt = "Listing image preview " + (index + 1);
+
+      const count = document.createElement("span");
+      count.className = "image-preview-count";
+      count.textContent = String(index + 1);
+
+      previewCard.appendChild(img);
+      previewCard.appendChild(count);
+      imagePreviewGrid.appendChild(previewCard);
+    });
+
+    reader.readAsDataURL(file);
+  });
+}
+
+function validateImages() {
+  const uploadBox = document.querySelector(".image-upload-box");
+
+  uploadBox.classList.remove("invalid", "valid");
+
+  if (selectedImageFiles.length === 0) {
+    imageMessage.textContent = "No images selected yet. You can still post without photos.";
+    imageMessage.classList.remove("error");
+    imageMessage.classList.add("success");
+    uploadBox.classList.add("valid");
+    return true;
+  }
+
+  if (selectedImageFiles.length > MAX_IMAGES) {
+    imageMessage.textContent = "You can upload up to 10 images.";
+    imageMessage.classList.add("error");
+    imageMessage.classList.remove("success");
+    uploadBox.classList.add("invalid");
+    return false;
+  }
+
+  imageMessage.textContent = selectedImageFiles.length + " image(s) selected";
+  imageMessage.classList.remove("error");
+  imageMessage.classList.add("success");
+  uploadBox.classList.add("valid");
+  return true;
+}
+
+function handleImageSelection() {
+  const chosenFiles = Array.from(imageInput.files || []);
+
+  if (chosenFiles.length > MAX_IMAGES) {
+    selectedImageFiles = chosenFiles.slice(0, MAX_IMAGES);
+    imageMessage.textContent = "Only the first 10 images were kept.";
+    imageMessage.classList.add("error");
+    imageMessage.classList.remove("success");
+  } else {
+    selectedImageFiles = chosenFiles;
+  }
+
+  renderImagePreviews();
+  validateImages();
+}
+
+function readFileAsDataURL(file) {
+  return new Promise(function (resolve, reject) {
+    const reader = new FileReader();
+
+    reader.addEventListener("load", function () {
+      resolve(reader.result);
+    });
+
+    reader.addEventListener("error", function () {
+      reject(new Error("Could not read image file."));
+    });
+
+    reader.readAsDataURL(file);
+  });
+}
+
+function formatStoredPrice(value) {
+  return value.trim().startsWith("$") ? value.trim() : "$" + value.trim();
+}
+
+function getCategoryLabel(value) {
+  const labels = {
+    furniture: "Furniture",
+    electronics: "Electronics",
+    clothing: "Clothing"
+  };
+
+  return labels[value] || value;
+}
+
+function getConditionLabel(value) {
+  const labels = {
+    new: "New",
+    "like-new": "Like New",
+    used: "Used"
+  };
+
+  return labels[value] || value;
+}
+
 title.addEventListener("input", validateTitle);
 title.addEventListener("blur", validateTitle);
 
@@ -129,7 +246,10 @@ category.addEventListener("blur", validateCategory);
 condition.addEventListener("change", validateCondition);
 condition.addEventListener("blur", validateCondition);
 
-form.addEventListener("submit", function (e) {
+imageInput.addEventListener("change", handleImageSelection);
+validateImages();
+
+form.addEventListener("submit", async function (e) {
   e.preventDefault();
 
   const titleValid = validateTitle();
@@ -137,15 +257,46 @@ form.addEventListener("submit", function (e) {
   const zipValid = validateZip();
   const categoryValid = validateCategory();
   const conditionValid = validateCondition();
+  const imagesValid = validateImages();
 
-  if (!titleValid || !priceValid || !zipValid || !categoryValid || !conditionValid) {
+  if (!titleValid || !priceValid || !zipValid || !categoryValid || !conditionValid || !imagesValid) {
     return;
   }
 
   postBtn.disabled = true;
   postBtn.textContent = "Posting...";
 
-  setTimeout(function () {
-    window.location.href = "product.html?posted=1";
-  }, 1200);
+  try {
+    const imageData = await Promise.all(
+      selectedImageFiles.map(function (file) {
+        return readFileAsDataURL(file);
+      })
+    );
+
+    const listingData = {
+      title: title.value.trim(),
+      price: formatStoredPrice(price.value),
+      zip: zip.value.trim(),
+      category: getCategoryLabel(category.value),
+      condition: getConditionLabel(condition.value),
+      description: document.getElementById("description").value.trim(),
+      size: document.getElementById("size").value.trim(),
+      brand: document.getElementById("brand").value.trim(),
+      model: document.getElementById("model").value.trim(),
+      images: imageData,
+      postedAt: new Date().toISOString()
+    };
+
+    localStorage.setItem("currentMarketplaceListing", JSON.stringify(listingData));
+
+    setTimeout(function () {
+      window.location.href = "product.html?posted=1&listing=custom";
+    }, 1200);
+  } catch (error) {
+    postBtn.disabled = false;
+    postBtn.textContent = "Post";
+    imageMessage.textContent = "Something went wrong while reading the selected images.";
+    imageMessage.classList.add("error");
+    imageMessage.classList.remove("success");
+  }
 });
