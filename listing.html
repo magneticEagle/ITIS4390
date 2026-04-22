@@ -21,12 +21,24 @@
         <div class="listing-main">
           <!-- Image upload area -->
           <div class="form-block">
-            <div class="placeholder-box image-box">
+            <input
+              type="file"
+              id="listingImages"
+              class="image-input"
+              accept="image/*"
+              multiple
+            >
+
+            <label for="listingImages" class="placeholder-box image-box image-upload-box">
               <div>
                 <div>Select Images</div>
                 <div class="small-text">(Max: 10)</div>
+                <div class="upload-helper-text">Click here to choose photos from your computer</div>
               </div>
-            </div>
+            </label>
+
+            <small class="field-message" id="imageMessage"></small>
+            <div class="image-preview-grid" id="imagePreviewGrid"></div>
           </div>
 
           <!-- Listing info -->
