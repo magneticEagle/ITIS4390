@@ -1,11 +1,11 @@
 :root {
   /* The consistent site colors (subject to change) */
-  --page-bg: #f4f7fb;
-  --header-bg: #b0d2fe;
+  --page-bg: #ffffff;
+  --header-bg: #ffffff;
   --panel-bg: #ffffff;
   --card-bg: #d0d0d0;
   --placeholder-bg: #b3b3b3;
-  --button-dark: #1e3a5f;
+  --button-dark: #0968f6;
   --button-light: #ff8a3d;
   --text: #1d1d1d;
   --border: #9f9f9f;
