@@ -56,17 +56,16 @@ document.querySelectorAll("[data-component]").forEach((el) => {
 
         if (accountTrigger && accountOverlay && accountClose && accountPanel) {
           function openAccountMenu() {
-            accountOverlay.classList.remove("hidden");
+          accountOverlay.classList.remove("hidden");
 
-            // wait one frame so the transition can animate
-            requestAnimationFrame(() => {
-              accountOverlay.classList.add("active");
-            });
+  // Force browser to recognize the starting position first
+          accountOverlay.offsetHeight;
 
-            accountTrigger.setAttribute("aria-expanded", "true");
-            accountOverlay.setAttribute("aria-hidden", "false");
-            document.body.classList.add("account-menu-open");
-          }
+          accountOverlay.classList.add("active");
+          accountTrigger.setAttribute("aria-expanded", "true");
+          accountOverlay.setAttribute("aria-hidden", "false");
+          document.body.classList.add("account-menu-open");
+}
 
           function closeAccountMenu() {
             accountOverlay.classList.remove("active");
