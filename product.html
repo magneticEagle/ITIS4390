@@ -23,10 +23,10 @@
       <div class="product-main">
         <!-- Product image area -->
         <div class="product-image-wrap">
-          <div class="placeholder-box image-box">Product Image Carousel</div>
+          <div class="placeholder-box image-box" id="productImagePlaceholder">Product Image Carousel</div>
 
           <!-- Carousel dots -->
-          <div class="carousel-dots" aria-hidden="true">
+          <div class="carousel-dots" id="productImageThumbs" aria-hidden="true">
             <span></span>
             <span></span>
             <span></span>
@@ -37,12 +37,12 @@
         <section class="product-header">
           <div class="product-heading-row">
             <div class="product-heading-text">
-              <h1 class="section-title">Listing Name</h1>
-              <p class="muted-text">City, State</p>
-              <p class="small-text">Listed (time) ago</p>
+              <h1 class="section-title" id="productTitle">Listing Name</h1>
+              <p class="muted-text" id="productLocationText">City, State</p>
+              <p class="small-text" id="productListedText">Listed (time) ago</p>
             </div>
 
-            <p class="product-price">$000.00</p>
+            <p class="product-price" id="productPrice">$000.00</p>
           </div>
         </section>
 
@@ -50,14 +50,14 @@
         <div class="button-row product-buttons">
 <div class="button-box dark">Offer</div>
 <button class="button-box outline wishlist-btn" type="button" aria-pressed="false"> <!-- Added 4/8/2026 -->
-    Wishlist
+    Save
   </button>
         </div>
 
         <!-- Product details -->
         <section class="info-block product-details-block">
           <h2 class="section-title">Product Details</h2>
-          <ul class="details-list">
+          <ul class="details-list" id="productDetailsList">
             <li>Category: x</li>
             <li>Brand: y</li>
             <li>Model: z</li>
@@ -67,7 +67,7 @@
         <!-- Description -->
         <section class="info-block product-description">
           <h2 class="section-title">Description</h2>
-          <p class="muted-text">Text body</p>
+          <p class="muted-text" id="productDescriptionText">Text body</p>
         </section>
 
         <!-- Seller info -->
@@ -86,7 +86,7 @@
         <!-- Location -->
         <section class="info-block product-location">
           <h2 class="section-title">Location</h2>
-          <div class="placeholder-box">Map of Product Location</div>
+          <div class="placeholder-box" id="productMapPlaceholder">Map of Product Location</div>
         </section>
       </div>
     </section>
