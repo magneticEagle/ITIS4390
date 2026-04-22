@@ -10,6 +10,7 @@
       <div class="search-wrap">
         <input type="text" id="search-input" placeholder="Search" aria-label="Product search">
         <ul id="search-results" class="search-results hidden"></ul>
+
         <!-- Full page loading overlay -->
         <div id="loading-overlay" class="loading-overlay hidden">
           <div class="spinner"></div>
@@ -21,9 +22,16 @@
       <a class="header-box icon-btn" href="#" aria-label="Messages">
         <span>✉</span>
       </a>
-      <a class="header-box icon-btn" href="#" aria-label="Account">
+
+      <button
+        class="header-box icon-btn account-menu-trigger"
+        type="button"
+        aria-label="Open account menu"
+        aria-expanded="false"
+        aria-controls="account-menu-panel"
+      >
         <span>𖨆</span>
-      </a>
+      </button>
 
       <!-- mobile hamburger menu -->
       <details class="mobile-nav">
@@ -53,6 +61,35 @@
     </div>
   </div>
 </header>
+
+<!-- Account menu overlay + panel -->
+<div class="account-menu-overlay hidden" id="account-menu-overlay" aria-hidden="true">
+  <div
+    class="account-menu-panel"
+    id="account-menu-panel"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="account-menu-title"
+  >
+    <div class="account-menu-content">
+      <div class="account-menu-header">
+        <div>
+          <p class="account-menu-eyebrow">Account</p>
+          <h2 id="account-menu-title">Your Menu</h2>
+        </div>
+
+        <button class="account-menu-close" type="button" aria-label="Close account menu">✕</button>
+      </div>
+
+      <div class="account-menu-actions">
+        <button class="account-menu-action" type="button">Profile</button>
+        <button class="account-menu-action" type="button">Saved Items</button>
+        <button class="account-menu-action" type="button">Dark Mode / Light Mode</button>
+        <button class="account-menu-action logout" type="button">Log Out</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Page transition spinner -->
 <div id="page-spinner" class="page-spinner hidden">
