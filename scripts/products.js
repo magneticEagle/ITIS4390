@@ -144,7 +144,6 @@ function renderProductCardHTML(product, template) {
   cardHTML = cardHTML.replace(/\{\{id\}\}/g, String(product.id));
   cardHTML = cardHTML.replace(/\{\{title\}\}/g, escapeHtml(product.title));
   cardHTML = cardHTML.replace(/\{\{price\}\}/g, escapeHtml(product.price));
-  cardHTML = cardHTML.replace(/\{\{shipping\}\}/g, escapeHtml(product.shipping));
   cardHTML = cardHTML.replace(/\{\{image\}\}/g, escapeHtml(product.image));
   cardHTML = cardHTML.replace(
     /\{\{conditionLabel\}\}/g,
@@ -191,16 +190,13 @@ function renderProductCardHTML(product, template) {
     ph.replaceWith(img);
   }
 
-  // Fill out the "details" list items (category/condition/shipping).
+  // Fill out the "details" list items (category/condition).
   const items = root.querySelectorAll(".details-list li");
   if (items[0]) {
     items[0].textContent = `Category: ${formatCategoryLabel(product.category)}`;
   }
   if (items[1]) {
     items[1].textContent = `Condition: ${formatConditionLabel(product.condition)}`;
-  }
-  if (items[2]) {
-    items[2].textContent = `Shipping: ${product.shipping}`;
   }
 })();
 
