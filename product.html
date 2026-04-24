@@ -8,6 +8,9 @@
   <!-- Main stylesheet -->
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/product.css">
+  <link rel="stylesheet" href="css/dark-mode.css">
+
+  <script>if(localStorage.getItem("marketplace_theme")==="dark")document.documentElement.classList.add("dark");</script>
 </head>
 <body>
   <!-- Top header -->
@@ -48,7 +51,7 @@
 
         <!-- Main actions -->
         <div class="button-row product-buttons">
-<div class="button-box dark">Offer</div>
+<button class="button-box dark offer-btn" type="button" id="offerBtn">Offer</button>
 <button class="button-box outline wishlist-btn" type="button" aria-pressed="false"> <!-- Added 4/8/2026 -->
     Save
   </button>
@@ -107,6 +110,9 @@
   }
 </script>
     <script src="scripts/search.js"></script>
-    <script src="scripts/loadComponents.js"></script>
+    <script src="scripts/auth.js"></script>
+  <script src="scripts/authModal.js"></script>
+  <script src="scripts/darkMode.js"></script>
+  <script src="scripts/loadComponents.js"></script>
 </body>
 </html>
