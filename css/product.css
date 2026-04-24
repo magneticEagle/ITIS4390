@@ -11,5 +11,5 @@
   text-align: center;
   margin: 0;
   font-size: 0.82rem;
-  color: #555;
+  color: var(--text-muted, #555);
 }
