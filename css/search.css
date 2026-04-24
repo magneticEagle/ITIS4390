@@ -14,7 +14,7 @@ main.page-shell {
 .search-empty {
   grid-column: 1 / -1;
   margin: 0;
-  color: #555;
+  color: var(--text-muted, #555);
 }
 
 .filters {
@@ -28,9 +28,10 @@ main.page-shell {
 }
 
 .filter-btn {
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  background: white;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  background: var(--panel-bg);
+  color: var(--text);
   border-radius: 6px;
   cursor: pointer;
 }
@@ -39,8 +40,9 @@ main.page-shell {
   position: absolute;
   top: 110%;
   left: 0;
-  background: white;
-  border: 1px solid #ddd;
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  color: var(--text);
   border-radius: 6px;
   width: 160px;
   display: none;
@@ -55,7 +57,7 @@ main.page-shell {
 }
 
 .filter-dropdown p:hover {
-  background: #f2f2f2;
+  background: var(--card-bg, #f2f2f2);
 }
 
 /* active state */
