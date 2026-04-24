@@ -10,16 +10,16 @@
 
 /* Help Page Styling */
 .help-page {
-  background: #f4f7fb;
+  background: var(--page-bg);
   min-height: 100vh;
-  padding: 32px 16px 40px;
+  padding: 2rem 1rem 2.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .help-page-title {
-  color: #111;
+  color: var(--text);
   text-align: left;
   width: 100%;
   max-width: 820px;
@@ -92,7 +92,7 @@
 .accordion-panel p {
   margin: 0.75rem 0 0;
   line-height: 1.5;
-  color: #333;
+  color: var(--text);
 }
 
 .accordion-panel p:first-child {
