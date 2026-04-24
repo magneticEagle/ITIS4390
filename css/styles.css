@@ -8,10 +8,23 @@
   --button-dark: #0968f6;
   --button-light: #ff8a3d;
   --text: #1d1d1d;
+  --text-muted: #595959;
   --border: #9f9f9f;
   --white: #ffffff;
   --important: #0968f6;
-  --wishlist-red: #d64b63; /* Added for wishlist button */
+  --wishlist-red: #d64b63;
+  --input-bg: #ffffff;
+  --hover-bg: #f0f0f0;
+  --shadow: rgba(0,0,0,.1);
+}
+
+:focus-visible {
+  outline: 3px solid var(--important);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
 }
 
 /* Gives space between boxes/buttons */
@@ -78,16 +91,17 @@ textarea {
 /* Main search input field in the header */
 #search-input {
   width: 100%;
-  padding: 12px 16px;
-  font-size: 16px;
-  border: 2px solid #ddd;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid var(--border);
   border-radius: 8px;
-  background: white;
+  background: var(--panel-bg);
+  color: var(--text);
 }
 
 /* Style when user clicks/focuses on the search bar */
 #search-input:focus {
-  border-color: #ff5722;
+  border-color: var(--important);
   outline: none;
 }
 
@@ -97,8 +111,8 @@ textarea {
   top: 100%;
   left: 0;
   right: 0;
-  background: white;
-  border: 1px solid #ddd;
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
   border-radius: 8px;
   margin-top: 6px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
@@ -117,13 +131,13 @@ textarea {
 
 /* Hover effects on suggestions */
 .search-results li:hover {
-  background-color: #f8f8f8;
+  background-color: var(--card-bg);
 }
 
 
 /* Style for "No results found" message */
 .search-results li.no-results {
-  color: #777;
+  color: var(--text-muted, #666);
   font-style: italic;
   cursor: default;
 }
@@ -141,23 +155,21 @@ textarea {
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  gap: 20px;
+  gap: 1.25rem;
 }
 
-/* Spinner animation */
 .spinner {
-  width: 50px;
-  height: 50px;
+  width: 3.125rem;
+  height: 3.125rem;
   border: 6px solid #f0f0f0;
-  border-top: 6px solid #ff5722;
+  border-top: 6px solid var(--important);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
 
-/* Text below the spinner */
 .loading-overlay p {
-  font-size: 18px;
-  color: #555;
+  font-size: 1.125rem;
+  color: var(--text-muted, #555);
 }
 
 /* Utility class to hide elements like suggestions dropdown and loading screen */
@@ -208,9 +220,11 @@ textarea {
 
 /* Temporary text for the msgs and acct buttons */
 .header-box {
+  width: 48px;
   min-width: 48px;
+  max-width: 48px;
   height: 32px;
-  padding: 0 0.5rem;
+  padding: 0;
   border: 1px solid var(--border);
   background: var(--panel-bg);
   display: flex;
@@ -283,7 +297,7 @@ textarea {
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #666;
+  color: var(--text-muted, #666);
 }
 
 .account-menu-close {
@@ -302,8 +316,8 @@ textarea {
 }
 
 .account-menu-card {
-  border: 1px solid #e2e2e2;
-  background: #f7f7f7;
+  border: 1px solid var(--border);
+  background: var(--card-bg, #f7f7f7);
   border-radius: 18px;
   padding: 1rem;
 }
@@ -316,21 +330,17 @@ textarea {
 
 .account-menu-card-text {
   margin: 0;
-  color: #555;
+  color: var(--text-muted, #555);
   line-height: 1.45;
-}
-
-.account-menu-actions {
-  display: grid;
-  gap: 0.75rem;
 }
 
 .account-menu-action {
   width: 100%;
   min-height: 52px;
-  border: 1px solid #d9d9d9;
+  border: 1px solid var(--border);
   border-radius: 14px;
   background: var(--white);
+  color: var(--text);
   text-align: left;
   padding: 0.9rem 1rem;
   font-weight: 600;
@@ -341,7 +351,7 @@ textarea {
 .account-menu-action:hover {
   transform: translateY(-1px);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  border-color: #c6c6c6;
+  border-color: var(--border);
 }
 
 /* The navigation for desktop users, not displayed on mobile */
@@ -537,7 +547,7 @@ textarea {
 .wishlist-btn.is-liked {
   color: var(--wishlist-red);
   border-color: var(--wishlist-red);
-  background: #fff5f7; /* Perfect paleish pink to indicate its been clicked */
+  background: rgba(214, 75, 99, 0.08);
 }
 
 /* ADDED 4/7/2026 */
@@ -640,7 +650,7 @@ article.product-card:hover {
   align-items: center;
   margin: 0 0 0.4rem;
   font-size: 0.78rem;
-  color: #555;
+  color: var(--text-muted, #555);
 }
 
 .condition-pill {
@@ -653,19 +663,13 @@ article.product-card:hover {
 }
 
 .posted-text {
-  color: #666;
+  color: var(--text-muted, #666);
 }
 
 .product-card .price {
   margin: 0.15rem 0;
   font-weight: 700;
   font-size: 1.05rem;
-}
-
-.product-card .shipping {
-  margin: 0;
-  font-size: 0.85rem;
-  color: #555;
 }
 
 .product-card-footer {
@@ -729,7 +733,7 @@ article.product-card:hover {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #111;
+  background: var(--text);
 }
 
 /* section around the title/location/listed time/price/etc. does spacing */
@@ -855,9 +859,11 @@ article.product-card:hover {
     padding: 0.95rem;
   }
 
-  /* Header icon buttons */
+  /* Header icon buttons — keep fixed 48px width on desktop too */
 .icon-btn {
-  width: 32px;
+  width: 48px;
+  min-width: 48px;
+  max-width: 48px;
   height: 32px;
 
   display: flex;
@@ -925,15 +931,15 @@ body.account-menu-open {
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  gap: 20px;
+  gap: 1.25rem;
 }
 
 .account-menu-panel {
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 100%; 
-  background: white;
+  width: 100%;
+  background: var(--white);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   transform: translateY(100%);
@@ -956,7 +962,7 @@ body.account-menu-open {
 
 .account-menu-panel {
   width: 100%;
-  background: #fff;
+  background: var(--white);
   border-top-left-radius: 18px;
   border-top-right-radius: 18px;
   transform: translateY(100%);
@@ -970,7 +976,7 @@ body.account-menu-open {
 .account-menu-content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px 16px 32px;
+  padding: 20px 16px 80px;
 }
 
 .account-menu-header {
@@ -981,31 +987,33 @@ body.account-menu-open {
 }
 
 .account-menu-eyebrow {
-  font-size: 12px;
-  color: #777;
-  margin-bottom: 4px;
+  font-size: 0.75rem;
+  color: var(--text-muted, #777);
+  margin-bottom: 0.25rem;
 }
 
 .account-menu-close {
   background: none;
   border: none;
-  font-size: 20px;
+  font-size: 1.25rem;
+  color: var(--text);
   cursor: pointer;
 }
 
 .account-menu-actions {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 0.75rem;
 }
 
 .account-menu-action {
   width: 100%;
-  min-height: 48px;
+  min-height: 3rem;
   border: 1px solid var(--border);
   border-radius: 12px;
-  background: #fff;
-  padding: 0 16px;
+  background: var(--white);
+  color: var(--text);
+  padding: 0 1rem;
   text-align: left;
   font: inherit;
   cursor: pointer;
@@ -1013,10 +1021,9 @@ body.account-menu-open {
 }
 
 .account-menu-action:hover {
-  background: #f5f5f5;
+  background: var(--card-bg, #f5f5f5);
 }
 
-/* Logout emphasis */
 .account-menu-action.logout {
-  color: #c0392b;
+  color: #b91c1c;
 }
