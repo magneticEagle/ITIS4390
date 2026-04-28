@@ -1,0 +1,15 @@
+.product-image-thumb {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  object-fit: cover;
+  background: var(--panel-bg);
+}
+
+.product-image-count {
+  text-align: center;
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--text-muted, #555);
+}

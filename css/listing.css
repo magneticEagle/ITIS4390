@@ -1,87 +1,248 @@
-  /* The product page desktop layout */
-  .product-main {
-    grid-template-columns: minmax(0, 1fr) 260px;
-    grid-template-areas:
-      "image buttons"
-      "header seller"
-      "details seller"
-      "description seller"
-      "location location";
-    align-items: start;
-    column-gap: 1rem;
-    row-gap: 1rem;
-  }
+/* Old product-related rules already in your file */
+.product-main {
+  grid-template-columns: minmax(0, 1fr) 260px;
+  grid-template-areas:
+    "image buttons"
+    "header seller"
+    "details seller"
+    "description seller"
+    "location location";
+  align-items: start;
+  column-gap: 1rem;
+  row-gap: 1rem;
+}
 
-  .product-image-wrap {
-    grid-area: image;
-  }
+.product-image-wrap {
+  grid-area: image;
+}
 
-  .product-header {
-    grid-area: header;
-  }
+.product-header {
+  grid-area: header;
+}
 
-  .product-buttons {
-    grid-area: buttons;
-    grid-template-columns: 1fr;
-    align-self: start;
-  }
+.product-buttons {
+  grid-area: buttons;
+  grid-template-columns: 1fr;
+  align-self: start;
+}
 
-  .product-details-block {
-    grid-area: details;
-  }
+.product-details-block {
+  grid-area: details;
+}
 
-  .product-description {
-    grid-area: description;
-  }
+.product-description {
+  grid-area: description;
+}
 
-  .seller-block {
-    grid-area: seller;
-    border-left: 1px solid var(--border);
-    padding-left: 1rem;
-    min-height: 100%;
-    align-content: start;
-  }
+.seller-block {
+  grid-area: seller;
+  border-left: 1px solid var(--border);
+  padding-left: 1rem;
+  min-height: 100%;
+  align-content: start;
+}
 
-  .seller-block .section-title {
-    text-align: center;
-  }
+.seller-block .section-title {
+  text-align: center;
+}
 
-  .product-location {
-    grid-area: location;
-  }
+.product-location {
+  grid-area: location;
+}
 
-  /* Listing page layout */
+/* Listing page layout */
+.listing-page {
+  display: grid;
+  gap: 1rem;
+  align-items: start;
+}
+
+.listing-main,
+.listing-side {
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+}
+
+.form-block {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.listing-page .section-title {
+  margin-top: 0;
+  margin-bottom: 0.15rem;
+}
+
+.listing-side {
+  border-left: none;
+  padding-left: 0;
+}
+
+/* Field wrappers so spaces are the same */
+.field-group {
+  display: grid;
+  gap: 0.15rem;
+  align-content: start;
+}
+
+/* Make inputs even */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+
+/* Validation message area */
+.field-message {
+  display: block;
+  font-size: 0.8rem;
+  line-height: 1rem;
+  margin: 0.15rem 0 0 0;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+
+  /*Smooth transition */
+  transform: translateY(-2px);
+  transition: 
+    opacity 0.15s ease,
+    max-height 0.15s ease,
+    transform 0.15s ease;
+}
+
+.field-message.error,
+.field-message.success {
+  opacity: 1;
+  max-height: 20px;
+  transform: translateY(0);
+}
+
+.field-message.error {
+  color: #c62828;
+}
+
+.field-message.success {
+  color: #2e7d32;
+}
+
+/* Validations on borders */
+.input.invalid,
+.select.invalid,
+.textarea.invalid {
+  border: 2px solid #c62828;
+}
+
+.input.valid,
+.select.valid,
+.textarea.valid {
+  border: 2px solid #2e7d32;
+}
+
+/* Keep form controls consistent */
+.input,
+.select,
+.textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Desktop layout */
+@media (min-width: 980px) {
   .listing-page {
-    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(320px, 1fr);
     gap: 1rem;
-  }
-
-  .form-block {
-    display: grid;
-    gap: 0.75rem;
-  }
-
-  .listing-page .section-title {
-    margin-top: 0.35rem;
-    margin-bottom: 0.15rem;
   }
 
   .listing-side {
+    border-left: 1px solid var(--border);
+    padding-left: 1rem;
+  }
+
+  .two-col {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .button-row {
     display: grid;
-    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+}
+
+/* Mobile layout */
+@media (max-width: 979px) {
+  .listing-page {
+    grid-template-columns: 1fr;
+  }
+
+  .listing-side {
     border-left: none;
     padding-left: 0;
   }
 
-  @media (min-width: 980px) {
-    .listing-page {
-      grid-template-columns: 2fr 1fr;
-      gap: 1.25rem;
-    }
-
-  .listing-side {
-    border-left: 1px solid var(--border);
-    padding-left: 1rem;
-    align-content: start;
+  .two-col {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
   }
+
+  .button-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+}
+
+
+.image-input {
+  display: none;
+}
+
+.image-upload-box {
+  cursor: pointer;
+  border: 2px dashed var(--border);
+  transition: border-color 0.18s ease, transform 0.18s ease;
+}
+
+.image-upload-box:hover {
+  border-color: var(--important);
+  transform: translateY(-1px);
+}
+
+.upload-helper-text {
+  margin-top: 0.45rem;
+  font-size: 0.85rem;
+}
+
+.image-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+  gap: 0.65rem;
+}
+
+.image-preview-card {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--panel-bg);
+}
+
+.image-preview-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-preview-count {
+  position: absolute;
+  right: 0.35rem;
+  bottom: 0.35rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.75);
+  color: var(--white);
+  font-size: 0.72rem;
 }
