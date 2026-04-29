@@ -59,6 +59,14 @@ function initSearch() {
         matches.forEach(product => {
           const li = document.createElement("li");
           li.textContent = product.title;
+
+          li.addEventListener("click", () => {
+            searchInput.value = product.title;
+            resultsList.classList.add("hidden");
+
+            window.location.href = `product.html?id=${product.id}`;
+          });
+
           resultsList.appendChild(li);
         });
       }
