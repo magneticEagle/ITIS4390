@@ -1,4 +1,4 @@
-Assignment 13 ~ Group 7
+Assignment 14 ~ Group 7
 
 Responsibilities:
 
@@ -21,7 +21,3 @@ Instructions:
 5.) Right click on index.html and open with live server. This will populate the webpage in your web browser.
 
 6.) Navigate the different screens using the header and/or footer buttons.
-
-Alternatively, you can manually open the following files to inspect them individually: index.html, product.html, listing.html, help.html, search.html
-
-Note: To view product.html, open it manually.
