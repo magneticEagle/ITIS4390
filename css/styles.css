@@ -1,15 +1,16 @@
 :root {
   /* The consistent site colors (subject to change) */
-  --page-bg: #ffffff;
+  --page-bg: #f0f2f5;
   --header-bg: #ffffff;
   --panel-bg: #ffffff;
-  --card-bg: #d0d0d0;
+  --card-bg: #ffffff;
   --placeholder-bg: #b3b3b3;
   --button-dark: #0968f6;
   --button-light: #ff8a3d;
+  --accordion-bg: #d4d8df;
   --text: #1d1d1d;
   --text-muted: #595959;
-  --border: #9f9f9f;
+  --border: #e4e6eb;
   --white: #ffffff;
   --important: #0968f6;
   --wishlist-red: #d64b63;
@@ -184,8 +185,8 @@ textarea {
 
 /* Site logo: fixed circle; image is cropped with object-fit */
 .logo {
-  width: 36px;
-  height: 36px;
+  width: 76px;
+  height: 76px;
   border-radius: 50%;
   overflow: hidden;
   background: var(--panel-bg);
@@ -196,8 +197,8 @@ textarea {
 }
 
 .logo img {
-  width: 100%;
-  height: 100%;
+  width: 200%;
+  height: 200%;
   object-fit: cover;
   object-position: center;
   display: block;
