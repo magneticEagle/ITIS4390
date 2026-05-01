@@ -15,45 +15,54 @@
       document.documentElement.classList.remove("dark");
       localStorage.setItem(STORAGE_KEY, "light");
     }
-    updateAllToggles();
+    var checkbox = document.querySelector(".dark-mode-toggle");
+    if (checkbox) checkbox.checked = dark;
   }
 
   function toggle() {
     applyTheme(!isDark());
   }
 
-  function updateAllToggles() {
-    document.querySelectorAll(".dark-mode-toggle").forEach(function (btn) {
-      btn.textContent = isDark() ? "☀️  Light Mode" : "🌙  Dark Mode";
-      btn.setAttribute("aria-label", isDark() ? "Switch to light mode" : "Switch to dark mode");
-    });
-  }
-
   function injectIntoAccountMenu() {
     const actionsDiv = document.querySelector(".account-menu-actions");
-    if (!actionsDiv || actionsDiv.querySelector(".dark-mode-toggle")) return;
+    if (!actionsDiv || document.querySelector(".dark-mode-toggle-row")) return;
 
     const placeholder = Array.from(
       actionsDiv.querySelectorAll(".account-menu-action")
     ).find(function (btn) {
       return btn.textContent.trim().toLowerCase().includes("dark");
     });
+    if (placeholder) placeholder.remove();
 
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "account-menu-action dark-mode-toggle";
-    btn.addEventListener("click", toggle);
+    const row = document.createElement("div");
+    row.className = "dark-mode-toggle-row";
 
-    function syncLabel() {
-      btn.textContent = isDark() ? "☀️  Light Mode" : "🌙  Dark Mode";
-    }
-    syncLabel();
+    const label = document.createElement("span");
+    label.className = "dark-mode-toggle-label";
+    label.textContent = "Dark Mode";
 
-    if (placeholder) {
-      placeholder.replaceWith(btn);
-    } else {
-      actionsDiv.appendChild(btn);
-    }
+    const toggleWrap = document.createElement("label");
+    toggleWrap.className = "ios-toggle";
+    toggleWrap.setAttribute("aria-label", "Toggle dark mode");
+
+    const input = document.createElement("input");
+    input.type = "checkbox";
+    input.className = "dark-mode-toggle";
+    input.checked = isDark();
+    input.addEventListener("change", function () {
+      applyTheme(input.checked);
+    });
+
+    const slider = document.createElement("span");
+    slider.className = "ios-toggle-slider";
+
+    toggleWrap.appendChild(input);
+    toggleWrap.appendChild(slider);
+
+    row.appendChild(label);
+    row.appendChild(toggleWrap);
+
+    actionsDiv.insertAdjacentElement("beforebegin", row);
   }
 
   function waitFor(selector, callback) {
@@ -69,7 +78,6 @@
 
   waitFor(".account-menu-actions", function () {
     injectIntoAccountMenu();
-    updateAllToggles();
   });
 
 })();
