@@ -81,12 +81,22 @@
 }
 
 .accordion-panel {
-  padding: 0 1rem 1rem;
+  background: var(--accordion-bg);
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  padding: 0 1rem;
   border-top: 1px solid var(--border);
+  transition:
+    max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.25s ease,
+    padding 0.3s ease;
 }
 
-.accordion-panel[hidden] {
-  display: none;
+.accordion-item.is-open .accordion-panel {
+  max-height: 500px;
+  opacity: 1;
+  padding: 0 1rem 1rem;
 }
 
 .accordion-panel p {
