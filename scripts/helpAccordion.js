@@ -1,14 +1,12 @@
 (function () {
   function initAccordions() {
-    document.querySelectorAll(".accordion-item").forEach(function (item) {
-      var trigger = item.querySelector(".accordion-trigger");
-      var panel = item.querySelector(".accordion-panel");
-      if (!trigger || !panel) return;
+    document.querySelectorAll(".accordion-item").forEach((item) => {
+      const trigger = item.querySelector(".accordion-trigger");
+      if (!trigger) return;
 
-      trigger.addEventListener("click", function () {
-        var open = item.classList.toggle("is-open");
-        trigger.setAttribute("aria-expanded", open ? "true" : "false");
-        panel.hidden = !open;
+      trigger.addEventListener("click", () => {
+        const isOpen = item.classList.toggle("is-open");
+        trigger.setAttribute("aria-expanded", isOpen);
       });
     });
   }
