@@ -172,7 +172,15 @@
     if (!btn) return;
     btn.addEventListener("click", function () {
       requireAuth(function () {
-        alert("Offer feature coming soon! Logged in as: " + Auth.getUser().username);
+        // Grab product title for context
+        var titleEl = document.getElementById("productTitle");
+        var itemName = titleEl ? titleEl.textContent.trim() : "this item";
+        var returnUrl = encodeURIComponent(window.location.href);
+        var url = "message.html"
+          + "?seller=" + encodeURIComponent("Seller Name")
+          + "&item="   + encodeURIComponent(itemName)
+          + "&from="   + returnUrl;
+        window.location.href = url;
       });
     });
   }
