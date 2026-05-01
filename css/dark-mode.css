@@ -6,6 +6,7 @@ html.dark {
   --placeholder-bg: #333748;
   --button-dark:    #3d8ef0;
   --button-light:   #ff9d5c;
+  --accordion-bg:   #17191d;
   --text:           #e8eaf0;
   --text-muted:     #9da3b4;
   --border:         #3a3e4e;
@@ -374,7 +375,7 @@ html.dark .accordion-item {
 }
 
 html.dark .accordion-panel {
-  border-top-color: var(--border);
+  border-top-color: var(--accordion-bg);
 }
 
 html.dark .accordion-trigger {
