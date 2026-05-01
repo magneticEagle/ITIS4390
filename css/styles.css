@@ -1027,3 +1027,64 @@ body.account-menu-open {
 .account-menu-action.logout {
   color: #b91c1c;
 }
+
+/* ── iOS-style dark mode toggle ── */
+.dark-mode-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.25rem 0.75rem;
+  margin-bottom: 0.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.dark-mode-toggle-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.ios-toggle {
+  position: relative;
+  display: inline-block;
+  width: 51px;
+  height: 31px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.ios-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.ios-toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: #ccc;
+  border-radius: 31px;
+  transition: background 0.25s ease;
+}
+
+.ios-toggle-slider::before {
+  content: "";
+  position: absolute;
+  width: 27px;
+  height: 27px;
+  left: 2px;
+  top: 2px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+  transition: transform 0.25s ease;
+}
+
+.ios-toggle input:checked + .ios-toggle-slider {
+  background: #34c759;
+}
+
+.ios-toggle input:checked + .ios-toggle-slider::before {
+  transform: translateX(20px);
+}
