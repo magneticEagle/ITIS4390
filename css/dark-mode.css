@@ -392,3 +392,11 @@ html.dark select {
   border-color: var(--border);
   color: var(--text);
 }
+
+html.dark .ios-toggle-slider {
+  background: #555;
+}
+
+html.dark .ios-toggle input:checked + .ios-toggle-slider {
+  background: #34c759;
+}
