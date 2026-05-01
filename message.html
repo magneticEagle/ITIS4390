@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Message Seller</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/dark-mode.css">
+  <link rel="stylesheet" href="css/message.css">
+  <script>if(localStorage.getItem("marketplace_theme")==="dark")document.documentElement.classList.add("dark");</script>
+</head>
+<body>
+  <div data-component="components/header.html"></div>
+
+  <main class="page-shell">
+    <div class="message-page">
+
+      <button class="message-back-btn" id="messageBackBtn" type="button">
+        ← Back
+      </button>
+
+      <div class="message-seller-header">
+        <div class="message-seller-avatar"></div>
+        <div class="message-seller-info">
+          <p class="message-seller-name" id="messageSellerName">Seller Name</p>
+          <p class="message-item-name" id="messageItemName">Item</p>
+        </div>
+      </div>
+
+      <hr class="message-divider">
+
+      <div class="message-chat-area" id="messageChatArea">
+      </div>
+
+      <div class="message-input-row">
+        <input
+          class="message-input"
+          id="messageInput"
+          type="text"
+          placeholder="Write a private message"
+          autocomplete="off"
+        >
+        <button class="message-send-btn" id="messageSendBtn" type="button" aria-label="Send message">
+          ›
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <div data-component="components/footer.html"></div>
+
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/loadComponents.js"></script>
+  <script src="scripts/authModal.js"></script>
+  <script src="scripts/darkMode.js"></script>
+  <script src="scripts/message.js"></script>
+</body>
+</html>
