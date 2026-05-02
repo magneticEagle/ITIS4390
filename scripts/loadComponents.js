@@ -105,6 +105,15 @@ document.querySelectorAll("[data-component]").forEach((el) => {
               closeAccountMenu();
             }
           });
+
+          accountPanel.addEventListener("click", (event) => {
+            const btn = event.target.closest(".account-menu-action");
+            if (btn && btn.textContent.trim() === "Saved Items") {
+              if (window.SavedItems) {
+                window.SavedItems.openSavedItemsPanel(accountOverlay, closeAccountMenu);
+              }
+            }
+          });
         }
       }
 
