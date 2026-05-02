@@ -172,12 +172,28 @@
     if (!btn) return;
     btn.addEventListener("click", function () {
       requireAuth(function () {
-        // Grab product title for context
         var titleEl = document.getElementById("productTitle");
         var itemName = titleEl ? titleEl.textContent.trim() : "this item";
+        var sellerName = "Seller Name";
+
+        var heroImg = document.querySelector(".product-hero-image");
+        var productImage = heroImg ? heroImg.src : null;
+
+        var productId = new URLSearchParams(window.location.search).get("id");
+
+        if (window.Inbox) {
+          window.Inbox.record({
+            seller:    sellerName,
+            item:      itemName,
+            image:     productImage,
+            productId: productId,
+            returnUrl: window.location.href
+          });
+        }
+
         var returnUrl = encodeURIComponent(window.location.href);
         var url = "message.html"
-          + "?seller=" + encodeURIComponent("Seller Name")
+          + "?seller=" + encodeURIComponent(sellerName)
           + "&item="   + encodeURIComponent(itemName)
           + "&from="   + returnUrl;
         window.location.href = url;
