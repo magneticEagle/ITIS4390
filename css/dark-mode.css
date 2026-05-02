@@ -289,6 +289,19 @@ html.dark .seller-block {
   border-left-color: var(--border);
 }
 
+/* Product page section cards — dark mode */
+html.dark .product-header,
+html.dark .info-block,
+html.dark .product-buttons {
+  background: var(--panel-bg);
+  border-color: var(--border);
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+html.dark .seller-block .muted-text {
+  color: var(--text);
+}
+
 html.dark .product-image-count,
 html.dark .muted-text,
 html.dark .small-text {
@@ -400,4 +413,26 @@ html.dark .ios-toggle-slider {
 
 html.dark .ios-toggle input:checked + .ios-toggle-slider {
   background: #34c759;
+}
+
+html.dark .inbox-panel {
+  background: var(--panel-bg);
+  border-color: var(--border);
+  box-shadow: 0 8px 28px var(--shadow);
+}
+
+html.dark .inbox-panel-header {
+  border-bottom-color: var(--border);
+}
+
+html.dark .inbox-thread {
+  border-bottom-color: var(--border);
+}
+
+html.dark .inbox-avatar-placeholder {
+  background: var(--button-dark);
+}
+
+html.dark .inbox-thread-link:hover {
+  background: var(--hover-bg);
 }
