@@ -53,7 +53,10 @@ document.querySelectorAll("[data-component]").forEach((el) => {
           }, 1500);
         });
 
-        // Account menu behavior
+        if (window.Inbox && window.Inbox.wireDropdown) {
+          window.Inbox.wireDropdown(el);
+        }
+
         const accountTrigger = el.querySelector(".account-menu-trigger");
         const accountOverlay = el.querySelector("#account-menu-overlay");
         const accountClose = el.querySelector(".account-menu-close");
