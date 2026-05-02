@@ -1029,7 +1029,7 @@ body.account-menu-open {
   color: #b91c1c;
 }
 
-/* ── iOS-style dark mode toggle ── */
+/* iOS style dark mode toggle */
 .dark-mode-toggle-row {
   display: flex;
   align-items: center;
@@ -1088,4 +1088,146 @@ body.account-menu-open {
 
 .ios-toggle input:checked + .ios-toggle-slider::before {
   transform: translateX(20px);
+}
+
+.inbox-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.inbox-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: #e53e3e;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.inbox-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 300px;
+  max-height: 380px;
+  overflow-y: auto;
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.13);
+  z-index: 2000;
+}
+
+.inbox-panel-header {
+  padding: 0.75rem 1rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.inbox-panel-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* Thread list */
+.inbox-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.inbox-empty {
+  padding: 1.25rem 1rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+.inbox-thread {
+  border-bottom: 1px solid var(--border);
+}
+
+.inbox-thread:last-child {
+  border-bottom: none;
+}
+
+.inbox-thread-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.15s ease;
+}
+
+.inbox-thread-link:hover {
+  background: var(--hover-bg);
+}
+
+.inbox-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: var(--placeholder-bg);
+}
+
+.inbox-avatar-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--button-dark);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 8px;
+}
+
+.inbox-thread-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.inbox-thread-seller {
+  font-weight: 600;
+  font-size: 0.88rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.inbox-thread-item {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.inbox-thread-time {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* Keep inbox-trigger's position context correct */
+.inbox-trigger {
+  position: relative;
+  appearance: none;
+  color: inherit;
 }
