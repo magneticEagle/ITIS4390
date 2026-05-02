@@ -1,5 +1,3 @@
-Assignment 14 ~ Group 7
-
 Responsibilities:
 
 Help Page: Joey
