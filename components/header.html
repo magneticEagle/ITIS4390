@@ -19,9 +19,27 @@
       </div>
 
       <!-- message inbox and account -->
-      <a class="header-box icon-btn" href="#" aria-label="Messages">
-        <span>✉</span>
-      </a>
+      <div class="inbox-wrap">
+        <button
+          class="header-box icon-btn inbox-trigger"
+          type="button"
+          aria-label="Inbox"
+          aria-expanded="false"
+          aria-controls="inbox-panel"
+        >
+          <span class="inbox-icon">✉</span>
+          <span class="inbox-badge hidden" id="inboxBadge"></span>
+        </button>
+
+        <div class="inbox-panel hidden" id="inbox-panel" role="dialog" aria-label="Inbox">
+          <div class="inbox-panel-header">
+            <span class="inbox-panel-title">Inbox</span>
+          </div>
+          <ul class="inbox-list" id="inboxList">
+            <li class="inbox-empty">No messages yet</li>
+          </ul>
+        </div>
+      </div>
 
       <button
         class="header-box icon-btn account-menu-trigger"
