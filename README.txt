@@ -6,7 +6,9 @@ Create Listing Page: Carson
 Product Page: Carson
 Search Page: Matvey
 
-Instructions:
+Instructions for Internet viewing: Visit https://magneticeagle.github.io/ITIS4390/
+
+Instructions for local viewing:
 
 1.) Download an IDE, such as VS Code
 
