@@ -2,16 +2,34 @@
 const wishlistButton = document.querySelector(".wishlist-btn");
 
 if (wishlistButton) {
+  // Set product id on the button so SavedItems can sync it with card buttons
+  const productId = new URLSearchParams(window.location.search).get("id");
+  if (productId) {
+    wishlistButton.dataset.productId = productId;
+  }
+
+  if (window.SavedItems && productId && window.SavedItems.isSaved(productId)) {
+    window.SavedItems.applyWishlistButtonState(wishlistButton, true);
+  }
+
   wishlistButton.addEventListener("click", () => {
-    // Toggle saved state
-    wishlistButton.classList.toggle("is-liked");
-
-    // Update state
-    const isLiked = wishlistButton.classList.contains("is-liked");
-    wishlistButton.setAttribute("aria-pressed", isLiked);
-
-    // Changes button text
-    wishlistButton.textContent = isLiked ? "Saved" : "Save";
+    if (window.SavedItems && productId) {
+      const titleEl = document.querySelector(".product-heading-text .section-title");
+      const priceEl = document.querySelector(".product-price");
+      const imgEl   = document.querySelector(".product-hero-image");
+      const meta = {
+        title: titleEl ? titleEl.textContent.trim() : "Product",
+        price: priceEl ? priceEl.textContent.trim() : "",
+        image: imgEl   ? imgEl.src : ""
+      };
+      const nowSaved = window.SavedItems.toggle(productId, meta);
+      window.SavedItems.applyWishlistButtonState(wishlistButton, nowSaved);
+    } else {
+      wishlistButton.classList.toggle("is-liked");
+      const isLiked = wishlistButton.classList.contains("is-liked");
+      wishlistButton.setAttribute("aria-pressed", isLiked);
+      wishlistButton.textContent = isLiked ? "Saved" : "Save";
+    }
   });
 }
 
