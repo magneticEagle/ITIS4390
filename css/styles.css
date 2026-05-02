@@ -590,7 +590,6 @@ textarea {
   border-radius: 8px;
 }
 
-/* Shared product cards (search grid + home sections) */
 article.product-card {
   display: flex;
   flex-direction: column;
@@ -679,20 +678,144 @@ article.product-card:hover {
   margin-top: auto;
 }
 
+@keyframes save-btn-pop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.18); }
+  70%  { transform: scale(0.93); }
+  100% { transform: scale(1); }
+}
+
 .product-card .save-btn {
   width: 100%;
   padding: 0.5rem;
-  border: none;
+  border: 1.5px solid transparent;
   border-radius: 8px;
   background: var(--button-dark);
   color: var(--white);
   cursor: pointer;
   font-size: 0.9rem;
-  transition: filter 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+              background-color 0.18s ease, color 0.18s ease,
+              border-color 0.18s ease, filter 0.18s ease;
+}
+
+.product-card .save-btn::before {
+  content: "♡";
+  font-size: 1rem;
+  transition: transform 0.18s ease;
 }
 
 .product-card .save-btn:hover {
-  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  filter: brightness(1.08);
+}
+
+.product-card .save-btn:active {
+  transform: scale(0.97);
+}
+
+.product-card .save-btn.is-saved {
+  background: rgba(214, 75, 99, 0.08);
+  color: var(--wishlist-red);
+  border-color: var(--wishlist-red);
+  font-weight: 600;
+  animation: save-btn-pop 0.32s ease forwards;
+}
+
+.product-card .save-btn.is-saved::before {
+  content: "♥";
+}
+
+.product-card .save-btn.is-saved:hover {
+  background: rgba(214, 75, 99, 0.14);
+  box-shadow: 0 4px 10px rgba(214, 75, 99, 0.18);
+}
+
+/* Saved Items panel list */
+.saved-items-list {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.saved-item-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.saved-item-row:last-child {
+  border-bottom: none;
+}
+
+.saved-item-thumb {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: var(--hover-bg);
+  border: 1px solid var(--border);
+}
+
+.saved-item-thumb--placeholder {
+  display: block;
+}
+
+.saved-item-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.saved-item-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.saved-item-title:hover {
+  text-decoration: underline;
+}
+
+.saved-item-price {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.saved-item-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  padding: 0.25rem 0.4rem;
+  border-radius: 6px;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
+}
+
+.saved-item-remove:hover {
+  background: rgba(214, 75, 99, 0.1);
+  color: var(--wishlist-red);
 }
 
 /* main container for product page */
@@ -1226,7 +1349,6 @@ body.account-menu-open {
   white-space: nowrap;
 }
 
-/* Keep inbox-trigger's position context correct */
 .inbox-trigger {
   position: relative;
   appearance: none;
