@@ -17,7 +17,7 @@ const mockProducts = [
     city: "Charlotte, NC",
     mapLat: 35.2271,
     mapLng: -80.8431,
-    description: "Great pair of over-ear wireless headphones with 30-hour battery life and noise isolation. Used lightly for remote work — sound quality is excellent, padding still in great shape. Comes with original charging cable and carry pouch.",
+    description: "Great pair of over-ear wireless headphones with 30-hour battery life and noise isolation. Used lightly for remote work. Sound quality is excellent, padding still in great shape. Comes with original charging cable and carry pouch.",
     sellerName: "Marcus T.",
     sellerReviews: 34,
     sellerStars: "4.8/5"
@@ -90,7 +90,7 @@ const mockProducts = [
     city: "Gastonia, NC",
     mapLat: 35.2621,
     mapLng: -81.1873,
-    description: "24-inch 1080p IPS monitor with crisp colors and wide viewing angles. Minor scuff on the bottom bezel — not visible during use. Includes HDMI and power cable. Great second monitor or starter display.",
+    description: "24-inch 1080p IPS monitor with crisp colors and wide viewing angles. Minor scuff on the bottom bezel, but it's not visible during use. Includes HDMI and power cable. Great second monitor or starter display.",
     sellerName: "Devon R.",
     sellerReviews: 8,
     sellerStars: "3.9/5"
@@ -114,7 +114,7 @@ const mockProducts = [
     city: "Rock Hill, SC",
     mapLat: 34.9249,
     mapLng: -81.0251,
-    description: "Full gaming rig — tower, peripherals, and dual monitors included. Specs: Ryzen 7, RTX 3070, 32GB RAM, 1TB NVMe SSD. Handles anything you throw at it. Upgrading to a new build, priced to move fast.",
+    description: "Full gaming tower, peripherals, and dual monitors included. Specs: Ryzen 7, RTX 3070, 32GB RAM, 1TB NVMe SSD. Handles any game really. Upgrading to a new build, priced to move fast.",
     sellerName: "Tyler M.",
     sellerReviews: 21,
     sellerStars: "4.7/5"
@@ -139,7 +139,7 @@ const mockProducts = [
     city: "Kannapolis, NC",
     mapLat: 35.4874,
     mapLng: -80.6215,
-    description: "Adjustable-height sit-stand desk with a smooth electric motor and memory presets. Solid wood top with minimal surface wear. Disassembled for easy pickup or delivery. Perfect for a home office upgrade.",
+    description: "Adjustable-height desk. Solid plastic top with minimal surface wear. I can disassemble it if you need it shipped or for easy pickup. Perfect for a home office upgrade.",
     sellerName: "Aaliyah W.",
     sellerReviews: 43,
     sellerStars: "4.6/5"
@@ -163,7 +163,7 @@ const mockProducts = [
     city: "Salisbury, NC",
     mapLat: 35.6710,
     mapLng: -80.4742,
-    description: "Mesh-back office chair with lumbar support and adjustable armrests. Foam has softened slightly over time but is still comfortable for long sessions. A few small scuffs on the base — functionally perfect.",
+    description: "Mesh-back office chair with lumbar support and adjustable armrests. Foam has softened slightly over time but is still comfortable for long sessions. A few small scuffs on the base, but functionally perfect.",
     sellerName: "Brian L.",
     sellerReviews: 6,
     sellerStars: "4.2/5"
@@ -188,7 +188,7 @@ const mockProducts = [
     city: "Mooresville, NC",
     mapLat: 35.5849,
     mapLng: -80.8098,
-    description: "Limited-edition resin figure from a popular series, still factory sealed in original box. Purchased as a collector's item — never opened or displayed. A great addition to any shelf.",
+    description: "Limited-edition Disney figure, in new condition. Purchased as a collector's item. A great addition to any shelf.",
     sellerName: "Zoe C.",
     sellerReviews: 19,
     sellerStars: "5.0/5"
@@ -213,7 +213,7 @@ const mockProducts = [
     city: "Statesville, NC",
     mapLat: 35.7826,
     mapLng: -80.8873,
-    description: "Vintage-style screen-printed poster in good condition with a few small edge creases from storage. Not framed. Dimensions approx. 18×24 inches. Free to a good home — just come pick it up.",
+    description: "Vintage-style screen-printed poster in good condition with a few small edge creases from storage. Not framed. Dimensions approx. 18×24 inches. Free to a good home, just come pick it up.",
     sellerName: "Ramon G.",
     sellerReviews: 31,
     sellerStars: "4.4/5"
