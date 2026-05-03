@@ -8,7 +8,15 @@ const mockProducts = [
     image: "images/headphones.jpeg",
     category: "gaming",
     postedDays: 2,
-    condition: "like-new"
+    condition: "like-new",
+    model: "N/A",
+    city: "Charlotte, NC",
+    mapLat: 35.2271,
+    mapLng: -80.8431,
+    description: "Great pair of over-ear wireless headphones with 30-hour battery life and noise isolation. Used lightly for remote work — sound quality is excellent, padding still in great shape. Comes with original charging cable and carry pouch.",
+    sellerName: "Marcus T.",
+    sellerReviews: 34,
+    sellerStars: "4.8/5"
   },
   {
     id: 2,
@@ -19,7 +27,15 @@ const mockProducts = [
     image: "images/gaming_mouse.jpg",
     category: "gaming",
     postedDays: 0,
-    condition: "new"
+    condition: "new",
+    model: "N/A",
+    city: "Concord, NC",
+    mapLat: 35.4088,
+    mapLng: -80.5795,
+    description: "Brand new in box, never used. Picked up a second one by mistake. Lightweight ergonomic design with adjustable DPI, programmable side buttons, and a braided cable. Perfect for FPS or everyday use.",
+    sellerName: "Jordan K.",
+    sellerReviews: 12,
+    sellerStars: "4.5/5"
   },
   {
     id: 3,
@@ -30,7 +46,15 @@ const mockProducts = [
     image: "images/keyboard.jpeg",
     category: "gaming",
     postedDays: 14,
-    condition: "used-good"
+    condition: "used-good",
+    model: "N/A",
+    city: "Monroe, NC",
+    mapLat: 34.9854,
+    mapLng: -80.5490,
+    description: "Tactile mechanical switches (brown) with satisfying feedback and a solid aluminum frame. Backlighting works perfectly. Some light keycap wear visible on WASD but nothing that affects performance. Great board for work or gaming.",
+    sellerName: "Priya S.",
+    sellerReviews: 57,
+    sellerStars: "4.9/5"
   },
   {
     id: 4,
@@ -41,7 +65,15 @@ const mockProducts = [
     image: "images/monitor.jpg",
     category: "gaming",
     postedDays: 45,
-    condition: "used-okay"
+    condition: "used-okay",
+    model: "N/A",
+    city: "Gastonia, NC",
+    mapLat: 35.2621,
+    mapLng: -81.1873,
+    description: "24-inch 1080p IPS monitor with crisp colors and wide viewing angles. Minor scuff on the bottom bezel — not visible during use. Includes HDMI and power cable. Great second monitor or starter display.",
+    sellerName: "Devon R.",
+    sellerReviews: 8,
+    sellerStars: "3.9/5"
   },
   {
     id: 5,
@@ -52,7 +84,15 @@ const mockProducts = [
     image: "images/gaming-setup.jpeg",
     category: "gaming",
     postedDays: 5,
-    condition: "like-new"
+    condition: "like-new",
+    model: "N/A",
+    city: "Rock Hill, SC",
+    mapLat: 34.9249,
+    mapLng: -81.0251,
+    description: "Full gaming rig — tower, peripherals, and dual monitors included. Specs: Ryzen 7, RTX 3070, 32GB RAM, 1TB NVMe SSD. Handles anything you throw at it. Upgrading to a new build, priced to move fast.",
+    sellerName: "Tyler M.",
+    sellerReviews: 21,
+    sellerStars: "4.7/5"
   },
   {
     id: 6,
@@ -63,7 +103,15 @@ const mockProducts = [
     image: "images/desk.jpeg",
     category: "furniture",
     postedDays: 1,
-    condition: "used-good"
+    condition: "used-good",
+    model: "N/A",
+    city: "Kannapolis, NC",
+    mapLat: 35.4874,
+    mapLng: -80.6215,
+    description: "Adjustable-height sit-stand desk with a smooth electric motor and memory presets. Solid wood top with minimal surface wear. Disassembled for easy pickup or delivery. Perfect for a home office upgrade.",
+    sellerName: "Aaliyah W.",
+    sellerReviews: 43,
+    sellerStars: "4.6/5"
   },
   {
     id: 7,
@@ -74,7 +122,15 @@ const mockProducts = [
     image: "images/chair.jpeg",
     category: "furniture",
     postedDays: 60,
-    condition: "used-okay"
+    condition: "used-okay",
+    model: "N/A",
+    city: "Salisbury, NC",
+    mapLat: 35.6710,
+    mapLng: -80.4742,
+    description: "Mesh-back office chair with lumbar support and adjustable armrests. Foam has softened slightly over time but is still comfortable for long sessions. A few small scuffs on the base — functionally perfect.",
+    sellerName: "Brian L.",
+    sellerReviews: 6,
+    sellerStars: "4.2/5"
   },
   {
     id: 8,
@@ -85,7 +141,15 @@ const mockProducts = [
     image: "images/figure.jpeg",
     category: "collectibles",
     postedDays: 0,
-    condition: "new"
+    condition: "new",
+    model: "N/A",
+    city: "Mooresville, NC",
+    mapLat: 35.5849,
+    mapLng: -80.8098,
+    description: "Limited-edition resin figure from a popular series, still factory sealed in original box. Purchased as a collector's item — never opened or displayed. A great addition to any shelf.",
+    sellerName: "Zoe C.",
+    sellerReviews: 19,
+    sellerStars: "5.0/5"
   },
   {
     id: 9,
@@ -96,7 +160,15 @@ const mockProducts = [
     image: "images/poster.jpeg",
     category: "collectibles",
     postedDays: 90,
-    condition: "used-good"
+    condition: "used-good",
+    model: "N/A",
+    city: "Statesville, NC",
+    mapLat: 35.7826,
+    mapLng: -80.8873,
+    description: "Vintage-style screen-printed poster in good condition with a few small edge creases from storage. Not framed. Dimensions approx. 18×24 inches. Free to a good home — just come pick it up.",
+    sellerName: "Ramon G.",
+    sellerReviews: 31,
+    sellerStars: "4.4/5"
   }
 ];
 
@@ -185,6 +257,44 @@ function renderProductCardHTML(product, template) {
   }
   if (items[1]) {
     items[1].textContent = `Condition: ${formatConditionLabel(product.condition)}`;
+  }
+  if (items[2]) {
+    items[2].textContent = `Model: ${product.model || "N/A"}`;
+  }
+
+  const locationEl = root.querySelector("#productLocationText");
+  if (locationEl && product.city) locationEl.textContent = product.city;
+
+  const descEl = root.querySelector("#productDescriptionText");
+  if (descEl && product.description) descEl.textContent = product.description;
+
+  const sellerNameEl = root.querySelector(".seller-block .muted-text");
+  if (sellerNameEl && product.sellerName) sellerNameEl.textContent = product.sellerName;
+  const sellerStatsEl = root.querySelector(".seller-block .small-text");
+  if (sellerStatsEl && product.sellerReviews) {
+    sellerStatsEl.textContent = `${product.sellerReviews} reviews · ${product.sellerStars} stars`;
+  }
+
+  const avatarEl = root.querySelector(".seller-avatar");
+  if (avatarEl && product.sellerName) {
+    const initial = product.sellerName.charAt(0).toUpperCase();
+    avatarEl.textContent = initial;
+    avatarEl.classList.add("seller-avatar-initial");
+  }
+
+  // OpenStreetMap
+  const mapPlaceholder = root.querySelector("#productMapPlaceholder");
+  if (mapPlaceholder && product.mapLat && product.mapLng) {
+    const zoom = 13;
+    const lat = product.mapLat;
+    const lng = product.mapLng;
+    const mapFrame = document.createElement("iframe");
+    mapFrame.className = "product-map-embed";
+    mapFrame.title = `Map showing ${product.city}`;
+    mapFrame.loading = "lazy";
+    mapFrame.referrerPolicy = "no-referrer-when-downgrade";
+    mapFrame.src = `https://www.openstreetmap.org/export/embed.html?bbox=${lng - 0.05},${lat - 0.03},${lng + 0.05},${lat + 0.03}&layer=mapnik&marker=${lat},${lng}`;
+    mapPlaceholder.replaceWith(mapFrame);
   }
 })();
 
