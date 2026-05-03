@@ -5,7 +5,7 @@
 
   function getThreads() {
     try {
-      return JSON.parse(sessionStorage.getItem(STORAGE_KEY)) || [];
+      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
     } catch (e) {
       return [];
     }
@@ -13,7 +13,7 @@
 
   function saveThreads(threads) {
     try {
-      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(threads));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(threads));
     } catch (e) {}
   }
 
