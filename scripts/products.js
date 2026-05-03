@@ -5,7 +5,11 @@ const mockProducts = [
     price: "$59.99",
     priceNum: 59.99,
     shipping: "Free shipping",
-    image: "images/headphones.jpeg",
+    image: "images/WirelessHeadphonesCover.jpg",
+    images: [
+      "images/WirelessHeadphonesCover.jpg",
+      "images/WirelessHeadphones2.jpg"
+    ],
     category: "gaming",
     postedDays: 2,
     condition: "like-new",
@@ -24,7 +28,12 @@ const mockProducts = [
     price: "$29.99",
     priceNum: 29.99,
     shipping: "$5 shipping",
-    image: "images/gaming_mouse.jpg",
+    image: "images/GamingMouseCover.jpg",
+    images: [
+      "images/GamingMouseCover.jpg",
+      "images/GamingMouse2.jpg",
+      "images/GamingMouse3.jpg"
+    ],
     category: "gaming",
     postedDays: 0,
     condition: "new",
@@ -43,7 +52,12 @@ const mockProducts = [
     price: "$89.99",
     priceNum: 89.99,
     shipping: "Free shipping",
-    image: "images/keyboard.jpeg",
+    image: "images/MechKeyCover.jpg",
+    images: [
+      "images/MechKeyCover.jpg",
+      "images/MechKey2.jpg",
+      "images/MechKey3.jpg"
+    ],
     category: "gaming",
     postedDays: 14,
     condition: "used-good",
@@ -62,7 +76,13 @@ const mockProducts = [
     price: "$149.99",
     priceNum: 149.99,
     shipping: "$15 shipping",
-    image: "images/monitor.jpg",
+    image: "images/MonitorCover.jpg",
+    images: [
+      "images/MonitorCover.jpg",
+      "images/Monitor2.jpg",
+      "images/Monitor3.jpg",
+      "images/Monitor4.jpg"
+    ],
     category: "gaming",
     postedDays: 45,
     condition: "used-okay",
@@ -81,7 +101,12 @@ const mockProducts = [
     price: "$1599.99",
     priceNum: 1599.99,
     shipping: "$15 shipping",
-    image: "images/gaming-setup.jpeg",
+    image: "images/PCSetupCover.jpg",
+    images: [
+      "images/PCSetupCover.jpg",
+      "images/PCSetup2.jpg",
+      "images/PCSetup3.jpg"
+    ],
     category: "gaming",
     postedDays: 5,
     condition: "like-new",
@@ -100,7 +125,13 @@ const mockProducts = [
     price: "$249.00",
     priceNum: 249,
     shipping: "$25 shipping",
-    image: "images/desk.jpeg",
+    image: "images/ErgoDeskCover.png",
+    images: [
+      "images/ErgoDeskCover.png",
+      "images/ErgoDesk2.jpg",
+      "images/ErgoDesk3.jpg",
+      "images/ErgoDesk4.jpg"
+    ],
     category: "furniture",
     postedDays: 1,
     condition: "used-good",
@@ -119,7 +150,12 @@ const mockProducts = [
     price: "$179.50",
     priceNum: 179.5,
     shipping: "$20 shipping",
-    image: "images/chair.jpeg",
+    image: "images/OfficeChairCover.jpg",
+    images: [
+      "images/OfficeChairCover.jpg",
+      "images/OfficeChair2.jpg",
+      "images/OfficeChair3.jpg"
+    ],
     category: "furniture",
     postedDays: 60,
     condition: "used-okay",
@@ -138,7 +174,13 @@ const mockProducts = [
     price: "$85.00",
     priceNum: 85,
     shipping: "$8 shipping",
-    image: "images/figure.jpeg",
+    image: "images/FigurineCover.jpg",
+    images: [
+      "images/FigurineCover.jpg",
+      "images/Figurine2.jpg",
+      "images/Figurine3.jpg",
+      "images/Figurine4.jpg"
+    ],
     category: "collectibles",
     postedDays: 0,
     condition: "new",
@@ -157,7 +199,13 @@ const mockProducts = [
     price: "$0",
     priceNum: 0,
     shipping: "Free shipping",
-    image: "images/poster.jpeg",
+    image: "images/PosterCover.jpg",
+    images: [
+      "images/PosterCover.jpg",
+      "images/Poster2.jpg",
+      "images/Poster3.jpg",
+      "images/Poster4.jpg"
+    ],
     category: "collectibles",
     postedDays: 90,
     condition: "used-good",
@@ -240,16 +288,151 @@ function renderProductCardHTML(product, template) {
   const listedEl = root.querySelector(".product-heading-text .small-text");
   if (listedEl) listedEl.textContent = formatPostedLabel(product.postedDays);
 
-  const ph = root.querySelector(".product-image-wrap .placeholder-box.image-box");
-  if (ph) {
-    const img = document.createElement("img");
-    img.className = "product-hero-image";
-    img.src = product.image;
-    img.alt = product.title;
-    img.width = 800;
-    img.height = 600;
-    ph.replaceWith(img);
+  const imageWrap = root.querySelector(".product-image-wrap");
+  const ph = imageWrap ? imageWrap.querySelector(".placeholder-box.image-box, #productImagePlaceholder") : null;
+
+  const allImages = product.images && product.images.length > 0
+    ? product.images
+    : [product.image];
+
+  if (imageWrap && ph) {
+    const carousel = document.createElement("div");
+    carousel.className = "carousel-container";
+
+    const track = document.createElement("div");
+    track.className = "carousel-track";
+
+    allImages.forEach((src, i) => {
+      const img = document.createElement("img");
+      img.className = "carousel-slide" + (i === 0 ? " active" : "");
+      img.src = src;
+      img.alt = `${product.title} photo ${i + 1}`;
+      img.draggable = false;
+      track.appendChild(img);
+    });
+
+    carousel.appendChild(track);
+
+    const lightbox = document.createElement("div");
+    lightbox.className = "lightbox-overlay";
+    lightbox.setAttribute("aria-modal", "true");
+    lightbox.setAttribute("role", "dialog");
+    lightbox.setAttribute("aria-label", "Image viewer");
+
+    const lbImg = document.createElement("img");
+    lbImg.className = "lightbox-img";
+    lbImg.alt = product.title;
+
+    const lbClose = document.createElement("button");
+    lbClose.className = "lightbox-close";
+    lbClose.setAttribute("aria-label", "Close image viewer");
+    lbClose.innerHTML = "&times;";
+
+    const lbCounter = document.createElement("span");
+    lbCounter.className = "lightbox-counter";
+
+    const lbPrev = document.createElement("button");
+    lbPrev.className = "lightbox-arrow lightbox-arrow-left";
+    lbPrev.setAttribute("aria-label", "Previous image");
+    lbPrev.innerHTML = "&#8249;";
+
+    const lbNext = document.createElement("button");
+    lbNext.className = "lightbox-arrow lightbox-arrow-right";
+    lbNext.setAttribute("aria-label", "Next image");
+    lbNext.innerHTML = "&#8250;";
+
+    lightbox.appendChild(lbImg);
+    lightbox.appendChild(lbClose);
+    lightbox.appendChild(lbCounter);
+    if (allImages.length > 1) {
+      lightbox.appendChild(lbPrev);
+      lightbox.appendChild(lbNext);
+    }
+    document.body.appendChild(lightbox);
+
+    let lbCurrent = 0;
+
+    function openLightbox(index) {
+      lbCurrent = index;
+      lbImg.src = allImages[lbCurrent];
+      lbImg.alt = `${product.title} photo ${lbCurrent + 1}`;
+      lbCounter.textContent = `${lbCurrent + 1} / ${allImages.length}`;
+      lightbox.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+
+    function lbGoTo(index) {
+      lbCurrent = (index + allImages.length) % allImages.length;
+      lbImg.src = allImages[lbCurrent];
+      lbImg.alt = `${product.title} photo ${lbCurrent + 1}`;
+      lbCounter.textContent = `${lbCurrent + 1} / ${allImages.length}`;
+    }
+
+    lbClose.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    lbPrev && lbPrev.addEventListener("click", (e) => { e.stopPropagation(); lbGoTo(lbCurrent - 1); });
+    lbNext && lbNext.addEventListener("click", (e) => { e.stopPropagation(); lbGoTo(lbCurrent + 1); });
+
+    document.addEventListener("keydown", (e) => {
+      if (!lightbox.classList.contains("active")) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") lbGoTo(lbCurrent - 1);
+      if (e.key === "ArrowRight") lbGoTo(lbCurrent + 1);
+    });
+
+    track.addEventListener("click", () => {
+      const slides = track.querySelectorAll(".carousel-slide");
+      let activeIndex = 0;
+      slides.forEach((s, i) => { if (s.classList.contains("active")) activeIndex = i; });
+      openLightbox(activeIndex);
+    });
+    track.style.cursor = "zoom-in";
+
+    if (allImages.length > 1) {
+      const btnPrev = document.createElement("button");
+      btnPrev.className = "carousel-arrow carousel-arrow-left";
+      btnPrev.setAttribute("aria-label", "Previous image");
+      btnPrev.innerHTML = "&#8249;";
+
+      const btnNext = document.createElement("button");
+      btnNext.className = "carousel-arrow carousel-arrow-right";
+      btnNext.setAttribute("aria-label", "Next image");
+      btnNext.innerHTML = "&#8250;";
+
+      carousel.appendChild(btnPrev);
+      carousel.appendChild(btnNext);
+
+      const counter = document.createElement("span");
+      counter.className = "carousel-counter";
+      counter.textContent = `1 / ${allImages.length}`;
+      carousel.appendChild(counter);
+
+      let current = 0;
+      const slides = track.querySelectorAll(".carousel-slide");
+
+      function goTo(index) {
+        slides[current].classList.remove("active");
+        current = (index + allImages.length) % allImages.length;
+        slides[current].classList.add("active");
+        counter.textContent = `${current + 1} / ${allImages.length}`;
+      }
+
+      btnPrev.addEventListener("click", (e) => { e.stopPropagation(); goTo(current - 1); });
+      btnNext.addEventListener("click", (e) => { e.stopPropagation(); goTo(current + 1); });
+    }
+
+    ph.replaceWith(carousel);
   }
+
+  const dotsEl = root.querySelector(".carousel-dots");
+  if (dotsEl) dotsEl.remove();
 
   const items = root.querySelectorAll(".details-list li");
   if (items[0]) {
