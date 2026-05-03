@@ -95,7 +95,11 @@
         price: btn.dataset.productPrice || "",
         image: btn.dataset.productImage || ""
       };
-      toggle(id, meta);
+      if (window.AuthModal && !window.Auth.isLoggedIn()) {
+        window.AuthModal.requireAuth(function () { toggle(id, meta); });
+      } else {
+        toggle(id, meta);
+      }
     });
   }
 
@@ -140,7 +144,6 @@
 
     panelContent.innerHTML = html;
 
-    // Back button → restore normal account menu
     var backBtn = document.getElementById("saved-panel-back");
     if (backBtn) {
       backBtn.addEventListener("click", function () {
