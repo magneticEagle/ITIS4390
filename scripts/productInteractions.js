@@ -1,8 +1,6 @@
-// Wishlist interaction for the product page
 const wishlistButton = document.querySelector(".wishlist-btn");
 
 if (wishlistButton) {
-  // Set product id on the button so SavedItems can sync it with card buttons
   const productId = new URLSearchParams(window.location.search).get("id");
   if (productId) {
     wishlistButton.dataset.productId = productId;
@@ -14,16 +12,23 @@ if (wishlistButton) {
 
   wishlistButton.addEventListener("click", () => {
     if (window.SavedItems && productId) {
-      const titleEl = document.querySelector(".product-heading-text .section-title");
-      const priceEl = document.querySelector(".product-price");
-      const imgEl   = document.querySelector(".product-hero-image");
-      const meta = {
-        title: titleEl ? titleEl.textContent.trim() : "Product",
-        price: priceEl ? priceEl.textContent.trim() : "",
-        image: imgEl   ? imgEl.src : ""
+      const doSave = () => {
+        const titleEl = document.querySelector(".product-heading-text .section-title");
+        const priceEl = document.querySelector(".product-price");
+        const imgEl   = document.querySelector(".product-hero-image");
+        const meta = {
+          title: titleEl ? titleEl.textContent.trim() : "Product",
+          price: priceEl ? priceEl.textContent.trim() : "",
+          image: imgEl   ? imgEl.src : ""
+        };
+        const nowSaved = window.SavedItems.toggle(productId, meta);
+        window.SavedItems.applyWishlistButtonState(wishlistButton, nowSaved);
       };
-      const nowSaved = window.SavedItems.toggle(productId, meta);
-      window.SavedItems.applyWishlistButtonState(wishlistButton, nowSaved);
+      if (window.AuthModal && !window.Auth.isLoggedIn()) {
+        window.AuthModal.requireAuth(doSave);
+      } else {
+        doSave();
+      }
     } else {
       wishlistButton.classList.toggle("is-liked");
       const isLiked = wishlistButton.classList.contains("is-liked");
