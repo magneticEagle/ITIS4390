@@ -52,22 +52,18 @@
       </button>
 
       <!-- mobile hamburger menu -->
-      <details class="mobile-nav">
-        <summary class="menu-toggle" aria-label="Open menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </summary>
-
-        <div class="mobile-menu">
-          <nav aria-label="Mobile navigation">
-            <a href="index.html">Home</a>
-            <a href="search.html">Search</a>
-            <a href="listing.html">Post</a>
-            <a href="help.html">Help</a>
-          </nav>
-        </div>
-      </details>
+      <button
+        class="mobile-nav menu-toggle"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-nav-overlay"
+        id="mobileNavTrigger"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
       <!-- desktop nav -->
       <nav class="desktop-nav" aria-label="Desktop navigation">
@@ -80,7 +76,34 @@
   </div>
 </header>
 
-<!-- Account menu overlay + panel -->
+
+<!-- Mobile nav overlay and panel -->
+<div class="mobile-nav-overlay hidden" id="mobile-nav-overlay" aria-hidden="true">
+  <div
+    class="mobile-nav-panel"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Navigation"
+  >
+    <div class="mobile-nav-panel-content">
+      <div class="mobile-nav-panel-header">
+        <div>
+          <p class="account-menu-eyebrow">Menu</p>
+          <h2>Navigate</h2>
+        </div>
+        <button class="account-menu-close mobile-nav-close" type="button" aria-label="Close navigation menu">✕</button>
+      </div>
+      <nav class="mobile-nav-actions" aria-label="Mobile navigation">
+        <a class="mobile-nav-action" href="index.html">Home</a>
+        <a class="mobile-nav-action" href="search.html">Search</a>
+        <a class="mobile-nav-action" href="listing.html">Post</a>
+        <a class="mobile-nav-action" href="help.html">Help</a>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<!-- Account menu overlay and panel -->
 <div class="account-menu-overlay hidden" id="account-menu-overlay" aria-hidden="true">
   <div
     class="account-menu-panel"
