@@ -11,6 +11,11 @@
   if (sellerEl) sellerEl.textContent = sellerName;
   if (itemEl)   itemEl.textContent   = "Re: " + decodeURIComponent(itemName);
 
+  var avatarEl = document.querySelector(".message-seller-avatar");
+  if (avatarEl && sellerName) {
+    avatarEl.textContent = sellerName.charAt(0).toUpperCase();
+  }
+
   var backBtn = document.getElementById("messageBackBtn");
   if (backBtn) {
     backBtn.addEventListener("click", function () {
