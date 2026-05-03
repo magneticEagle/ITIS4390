@@ -174,7 +174,8 @@
       requireAuth(function () {
         var titleEl = document.getElementById("productTitle");
         var itemName = titleEl ? titleEl.textContent.trim() : "this item";
-        var sellerName = "Seller Name";
+        var sellerNameEl = document.querySelector(".seller-block .muted-text");
+        var sellerName = sellerNameEl ? sellerNameEl.textContent.trim() : "Seller";
 
         var heroImg = document.querySelector(".product-hero-image");
         var productImage = heroImg ? heroImg.src : null;
