@@ -224,6 +224,8 @@
   gateListingPage();
   gateOfferButton();
 
+  window.AuthModal = { requireAuth: requireAuth };
+
   function waitForHeader(fn) {
     if (document.querySelector(".account-menu-actions")) { fn(); return; }
     var interval = setInterval(function () {
