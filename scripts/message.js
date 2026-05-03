@@ -18,6 +18,26 @@
     });
   }
 
+  var THREAD_KEY = "marketplace_msgs__" +
+    encodeURIComponent(sellerName) + "__" +
+    encodeURIComponent(decodeURIComponent(itemName));
+
+  function loadMessages() {
+    try {
+      return JSON.parse(localStorage.getItem(THREAD_KEY)) || [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function persistMessage(text, timestampStr) {
+    var msgs = loadMessages();
+    msgs.push({ text: text, timestamp: timestampStr, time: Date.now() });
+    try {
+      localStorage.setItem(THREAD_KEY, JSON.stringify(msgs));
+    } catch (e) {}
+  }
+
   function getTimestamp() {
     var now = new Date();
     var h   = now.getHours();
@@ -31,10 +51,7 @@
   var sendBtn  = document.getElementById("messageSendBtn");
   var chatArea = document.getElementById("messageChatArea");
 
-  function sendMessage() {
-    var text = input ? input.value.trim() : "";
-    if (!text) return;
-
+  function renderBubble(text, timestampStr) {
     var wrap = document.createElement("div");
     wrap.className = "message-bubble-wrap";
 
@@ -44,15 +61,33 @@
 
     var ts = document.createElement("span");
     ts.className = "message-timestamp";
-    ts.textContent = getTimestamp();
+    ts.textContent = timestampStr;
 
     wrap.appendChild(bubble);
     wrap.appendChild(ts);
+    return wrap;
+  }
+
+  if (chatArea) {
+    var saved = loadMessages();
+    saved.forEach(function (msg) {
+      chatArea.appendChild(renderBubble(msg.text, msg.timestamp));
+    });
+    if (saved.length) chatArea.scrollTop = chatArea.scrollHeight;
+  }
+
+  function sendMessage() {
+    var text = input ? input.value.trim() : "";
+    if (!text) return;
+
+    var timestampStr = getTimestamp();
 
     if (chatArea) {
-      chatArea.appendChild(wrap);
+      chatArea.appendChild(renderBubble(text, timestampStr));
       chatArea.scrollTop = chatArea.scrollHeight;
     }
+
+    persistMessage(text, timestampStr);
 
     input.value = "";
     input.focus();
