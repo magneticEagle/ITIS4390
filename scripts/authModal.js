@@ -1,5 +1,27 @@
 (function () {
 
+  var styleEl = document.createElement("style");
+  styleEl.textContent = [
+    ".auth-field-wrap { display: grid; gap: 0.15rem; margin-bottom: 0.5rem; }",
+    ".auth-field-wrap input {",
+    "  width: 100%; box-sizing: border-box; padding: 0.6rem 0.75rem;",
+    "  border: 1px solid var(--border); border-radius: 8px;",
+    "  font-size: 1rem; background: var(--panel-bg); color: var(--text);",
+    "  transition: border-color 0.15s ease;",
+    "}",
+    ".auth-field-wrap input.auth-invalid { border: 2px solid #c62828; }",
+    ".auth-field-wrap input.auth-valid   { border: 2px solid #2e7d32; }",
+    ".auth-field-msg {",
+    "  display: block; font-size: 0.8rem; line-height: 1rem;",
+    "  margin: 0.1rem 0 0 0; opacity: 0; max-height: 0; overflow: hidden;",
+    "  transform: translateY(-2px);",
+    "  transition: opacity 0.15s ease, max-height 0.15s ease, transform 0.15s ease;",
+    "}",
+    ".auth-field-msg.error  { opacity:1; max-height:20px; transform:translateY(0); color:#c62828; }",
+    ".auth-field-msg.success{ opacity:1; max-height:20px; transform:translateY(0); color:#2e7d32; }"
+  ].join("\n");
+  document.head.appendChild(styleEl);
+
   var formHTML =
     '<div id="auth-form-wrap" style="display:none; position:fixed; inset:0;' +
     ' background:rgba(0,0,0,0.4); z-index:9999; align-items:center; justify-content:center;">' +
@@ -15,27 +37,22 @@
     '    </p>' +
 
     // Username
-    '    <div id="auth-username-wrap">' +
-    '      <input id="auth-username" type="text" placeholder="Username"' +
-    '        style="width:100%; box-sizing:border-box; padding:0.6rem 0.75rem;' +
-    '        margin-bottom:0.5rem; border:1px solid var(--border); border-radius:8px;' +
-    '        font-size:1rem; background:var(--panel-bg); color:var(--text);">' +
+    '    <div id="auth-username-wrap" class="auth-field-wrap">' +
+    '      <input id="auth-username" type="text" placeholder="Username">' +
+    '      <span id="auth-username-msg" class="auth-field-msg"></span>' +
     '    </div>' +
 
     // Email
-    '    <input id="auth-email" type="email" placeholder="Email"' +
-    '      style="width:100%; box-sizing:border-box; padding:0.6rem 0.75rem;' +
-    '      margin-bottom:0.5rem; border:1px solid var(--border); border-radius:8px;' +
-    '      font-size:1rem; background:var(--panel-bg); color:var(--text);">' +
+    '    <div class="auth-field-wrap">' +
+    '      <input id="auth-email" type="email" placeholder="Email">' +
+    '      <span id="auth-email-msg" class="auth-field-msg"></span>' +
+    '    </div>' +
 
-    // Password field
-    '    <input id="auth-password" type="password" placeholder="Password"' +
-    '      style="width:100%; box-sizing:border-box; padding:0.6rem 0.75rem;' +
-    '      margin-bottom:0.5rem; border:1px solid var(--border); border-radius:8px;' +
-    '      font-size:1rem; background:var(--panel-bg); color:var(--text);">' +
-
-    '    <p id="auth-error-msg" style="color:#b91c1c; font-size:0.85rem;' +
-    '      margin:0 0 0.75rem; min-height:1.2em;"></p>' +
+    // Password
+    '    <div class="auth-field-wrap">' +
+    '      <input id="auth-password" type="password" placeholder="Password">' +
+    '      <span id="auth-password-msg" class="auth-field-msg"></span>' +
+    '    </div>' +
 
     '    <button id="auth-submit-btn" type="button"' +
     '      style="width:100%; padding:0.65rem; background:var(--button-dark); color:#fff;' +
@@ -55,17 +72,95 @@
   var switchBtn   = document.getElementById("auth-switch-btn");
   var usernameWrap= document.getElementById("auth-username-wrap");
   var usernameEl  = document.getElementById("auth-username");
+  var usernameMsgEl = document.getElementById("auth-username-msg");
   var emailEl     = document.getElementById("auth-email");
+  var emailMsgEl  = document.getElementById("auth-email-msg");
   var passwordEl  = document.getElementById("auth-password");
-  var errorMsg    = document.getElementById("auth-error-msg");
+  var passwordMsgEl = document.getElementById("auth-password-msg");
   var submitBtn   = document.getElementById("auth-submit-btn");
   var cancelBtn   = document.getElementById("auth-cancel-btn");
 
   var mode       = "login";
   var afterLogin = null;
 
+  function showFieldError(input, msgEl, message) {
+    input.classList.add("auth-invalid");
+    input.classList.remove("auth-valid");
+    msgEl.textContent = message;
+    msgEl.classList.add("error");
+    msgEl.classList.remove("success");
+  }
+
+  function clearFieldError(input, msgEl) {
+    input.classList.remove("auth-invalid", "auth-valid");
+    msgEl.textContent = "";
+    msgEl.classList.remove("error", "success");
+  }
+
+  function validateUsername() {
+    if (mode !== "signup") return true;
+    var val = usernameEl.value.trim();
+    if (val.length === 0) {
+      showFieldError(usernameEl, usernameMsgEl, "Username is required.");
+      return false;
+    }
+    if (val.length < 3 || val.length > 18) {
+      showFieldError(usernameEl, usernameMsgEl, "Username must be 3–18 characters.");
+      return false;
+    }
+    clearFieldError(usernameEl, usernameMsgEl);
+    return true;
+  }
+
+  function validateEmail() {
+    var val = emailEl.value.trim();
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (val.length === 0) {
+      showFieldError(emailEl, emailMsgEl, "Email is required.");
+      return false;
+    }
+    if (!emailPattern.test(val)) {
+      showFieldError(emailEl, emailMsgEl, "Enter a valid email (e.g. name@example.com).");
+      return false;
+    }
+    clearFieldError(emailEl, emailMsgEl);
+    return true;
+  }
+
+  function validatePassword() {
+    var val = passwordEl.value;
+    if (val.length === 0) {
+      showFieldError(passwordEl, passwordMsgEl, "Password is required.");
+      return false;
+    }
+    if (val.length < 3 || val.length > 18) {
+      showFieldError(passwordEl, passwordMsgEl, "Password must be 3–18 characters.");
+      return false;
+    }
+    clearFieldError(passwordEl, passwordMsgEl);
+    return true;
+  }
+
+  usernameEl.addEventListener("blur", validateUsername);
+  usernameEl.addEventListener("input", function () {
+    if (usernameEl.classList.contains("auth-invalid")) validateUsername();
+  });
+  emailEl.addEventListener("blur", validateEmail);
+  emailEl.addEventListener("input", function () {
+    if (emailEl.classList.contains("auth-invalid")) validateEmail();
+  });
+  passwordEl.addEventListener("blur", validatePassword);
+  passwordEl.addEventListener("input", function () {
+    if (passwordEl.classList.contains("auth-invalid")) validatePassword();
+  });
+
   function setMode(m) {
     mode = m;
+    // Clear all field states when switching modes
+    clearFieldError(usernameEl, usernameMsgEl);
+    clearFieldError(emailEl, emailMsgEl);
+    clearFieldError(passwordEl, passwordMsgEl);
+
     if (mode === "login") {
       title.textContent = "Log In";
       submitBtn.textContent = "Log In";
@@ -77,7 +172,6 @@
       switchBtn.textContent = "Already have an account? Log in";
       usernameWrap.style.display = "";
     }
-    errorMsg.textContent = "";
   }
 
   function showForm(callback, startMode) {
@@ -85,6 +179,9 @@
     usernameEl.value = "";
     emailEl.value = "";
     passwordEl.value = "";
+    clearFieldError(usernameEl, usernameMsgEl);
+    clearFieldError(emailEl, emailMsgEl);
+    clearFieldError(passwordEl, passwordMsgEl);
     setMode(startMode || "login");
     wrap.style.display = "flex";
     (mode === "signup" ? usernameEl : emailEl).focus();
@@ -101,20 +198,14 @@
   });
 
   submitBtn.addEventListener("click", function () {
+    var usernameOk = validateUsername();
+    var emailOk    = validateEmail();
+    var passwordOk = validatePassword();
+
+    if (!usernameOk || !emailOk || !passwordOk) return;
+
     var username = usernameEl.value.trim();
     var email    = emailEl.value.trim();
-    var password = passwordEl.value;
-    errorMsg.textContent = "";
-
-    if (mode === "signup" && !username) {
-      errorMsg.textContent = "Please enter a username."; return;
-    }
-    if (!email || !email.includes("@")) {
-      errorMsg.textContent = "Please enter a valid email."; return;
-    }
-    if (!password) {
-      errorMsg.textContent = "Please enter a password."; return;
-    }
 
     Auth.login(mode === "signup" ? username : email.split("@")[0]);
     hideForm();
